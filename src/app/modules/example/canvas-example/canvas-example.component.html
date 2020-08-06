@@ -1,0 +1,24 @@
+<div class="toolBar">
+  <a class="btn" (click)="singleData()">渲染单个数据</a>
+  <a class="btn" (click)="throttleData()">节流渲染 {{throttleNumber}} 个数据</a>
+  <a class="btn" (click)="moreData()">直接渲染 {{moreNumber}} 个数据</a>
+  <a class="btn" (click)="getBindEvent()">查看当前已经绑定的事件</a>
+</div>
+<div class="form">
+  <div class="formItem">
+    节流渲染节点个数: <input type="text" name="throttleNumber" [(ngModel)]="throttleNumber" />
+  </div>
+  <div class="formItem">
+    节流渲染节点个数: <input type="text" name="moreNumber" [(ngModel)]="moreNumber" />
+  </div>
+</div>
+<div class="flow">
+  <div class="left">
+    <div *ngFor="let item of items">
+      <a draggable="true" class="item" (dragstart)="onDragStart($event, item)" (touchstart)="onTouchstart(item)">{{item.label}}</a>
+    </div>
+  </div>
+  <div class="right">
+    <div id="diagramContainer" class="graphcontainer" #graphcontainer></div>
+  </div>
+</div>
