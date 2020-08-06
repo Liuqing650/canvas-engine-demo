@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CanvasExampleComponent } from './canvas-example/canvas-example.component';
+import { WebGlComponent } from './web-gl/web-gl.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,11 @@ const routes: Routes = [
         path: 'canvas',
         component: CanvasExampleComponent,
         data: { title: 'Canvas引擎Demo' },
+      },
+      {
+        path: 'webgl',
+        component: WebGlComponent,
+        data: { title: 'web-gl' },
       },
       {
         path: '',

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Canvas } from 'src/app/lib/core/canvas';
-import { NodeConfig } from 'src/app/lib/interface';
+import { NodeConfig, EdgeConfig } from 'src/app/lib/interface';
 import { throttleArray } from 'src/app/lib/util';
 
 @Component({
@@ -61,8 +61,15 @@ export class CanvasExampleComponent implements OnInit {
   }
   singleData() {
     this.canvas.clear();
-    const model = this.createOndeModule();
+    const model = this.createOndeModule(true);
     this.canvas.addItem(model);
+  }
+  linkData() {
+    this.canvas.clear();
+    const nodea = this.createOndeModule(true, 'node1', 200, 100);
+    const nodeb = this.createOndeModule(true, 'node2', 300, 400);
+    const edge = this.createEdgeModule('edge1', 'node1', 'node2');
+    this.canvas.read({nodes: [nodea, nodeb], edges: [ edge ]});
   }
   throttleData() {
     const size = this.size;
@@ -78,7 +85,7 @@ export class CanvasExampleComponent implements OnInit {
     const size = this.size;
     const number = isNaN(Number(this.moreNumber)) ? 0 : Number(this.moreNumber);
     const shapes = this.createDraw(number, size.width - 100, size.height - 100);
-    this.canvas.read(shapes);
+    this.canvas.read({nodes: shapes, edges: []});
   }
   getBindEvent() {
     const event = this.canvas.getEvents();
@@ -93,7 +100,7 @@ export class CanvasExampleComponent implements OnInit {
       const {shape} = event;
       if (shape && shape.model) {
         console.log('我收到监听消息,你选中了%c%s', 'color: red; font-weight: 700; font-size: 24px;', `节点: ${shape.model.label}`);
-        console.log('详细信息', shape.model);
+        console.log('详细信息', shape);
       }
     });
     this.canvas.on('mouseup', () => {
@@ -101,10 +108,10 @@ export class CanvasExampleComponent implements OnInit {
     });
   }
 
-  createOndeModule(): NodeConfig {
+  createOndeModule(anchor: boolean, nodeId?: string, x?: number, y?: number): NodeConfig {
     const model: NodeConfig = {
-      x: 200,
-      y: 100,
+      x: x || 200,
+      y: y || 100,
       width: 120,
       height: 60,
       label: 'text',
@@ -115,15 +122,35 @@ export class CanvasExampleComponent implements OnInit {
       labelStyle: {
         fontSize: 20,
         color: '#FFF'
+      },
+      anchor,
+    };
+    if (nodeId) {
+      model.id = nodeId;
+    }
+    return model;
+  }
+  createEdgeModule(edgeId?: string, source?: string, target?: string): EdgeConfig {
+    const model: EdgeConfig = {
+      shapeName: 'line',
+      source: source || 'node-1',
+      target: target || 'node-2',
+      sourceAnchorIndex: 3,
+      targetAnchorIndex: 1,
+      style: {
+        fillStyle: '#4d9f0c',
       }
     };
+    if (edgeId) {
+      model.id = edgeId;
+    }
     return model;
   }
 
   createDraw(count: number, x: number, y: number) {
     const output = [];
     for (let idx = 0; idx < count; idx++) {
-      const nodeConfig = this.createOndeModule();
+      const nodeConfig = this.createOndeModule(false);
       nodeConfig.label = `${idx}`;
       nodeConfig.width = 30;
       nodeConfig.height = 30;
@@ -146,7 +173,8 @@ export class CanvasExampleComponent implements OnInit {
       labelStyle: {
         fontSize: 20,
         color: '#FFF'
-      }
+      },
+      anchor: true,
     };
     if (item.shapeName === 'circle') {
       base.height = base.width;

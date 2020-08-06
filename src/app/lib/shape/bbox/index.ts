@@ -1,6 +1,6 @@
 import { Point } from '../point';
 import { pointInBBox } from '../../util';
-import { NodeConfig } from '../../interface';
+import { NodeConfig, BBoxConfig } from '../../interface';
 
 export class BBox {
   public x: number;
@@ -11,30 +11,56 @@ export class BBox {
   public maxY: number;
   public width: number;
   public height: number;
+  public name?: string;
+  public zIndex?: number;
+  public anchorIndex?: number;
   public center: Point = new Point(0, 0);
 
-  constructor(x: number, y: number, width: number, height: number) {
-    this.init(x, y, width, height);
+  constructor(cfg: BBoxConfig) {
+    this.init(cfg);
   }
 
-  private init(x: number, y: number, width: number, height: number) {
-    this.width = width < 0 ? 0 : width;
-    this.height = height < 0 ? 0 : height;
-    this.x = x;
-    this.y = y;
-    this.minX = x;
-    this.minY = y;
+  private init(cfg: BBoxConfig) {
+    this.width = cfg.width < 0 ? 0 : cfg.width;
+    this.height = cfg.height < 0 ? 0 : cfg.height;
+    this.x = cfg.x << 0;
+    this.y = cfg.y << 0;
+    this.minX = this.x;
+    this.minY = this.y;
     this.maxX = this.x + this.width;
     this.maxY = this.y + this.height;
+    this.name = cfg.name || this.name || '';
+    this.zIndex = cfg.zIndex;
+    this.anchorIndex = cfg.anchorIndex;
     this.calceCenter();
   }
 
   public clone(): BBox {
-    return new BBox(this.x, this.y, this.width, this.height);
+    const config: BBoxConfig = {
+      x: this.x,
+      y: this.y,
+      width: this.width,
+      height: this.height,
+    };
+    return new BBox(config);
   }
 
   public update(model: NodeConfig) {
-    this.init(model.x, model.y, model.width, model.height);
+    const cfg: BBoxConfig = {
+      x: model.x,
+      y: model.y,
+      width: model.width,
+      height: model.height,
+    };
+    this.width = cfg.width < 0 ? 0 : cfg.width;
+    this.height = cfg.height < 0 ? 0 : cfg.height;
+    this.x = cfg.x << 0;
+    this.y = cfg.y << 0;
+    this.minX = this.x;
+    this.minY = this.y;
+    this.maxX = this.x + this.width;
+    this.maxY = this.y + this.height;
+    this.calceCenter();
   }
 
   public calceCenter() {
@@ -42,8 +68,8 @@ export class BBox {
     this.center.y = this.y + this.height / 2;
   }
 
-  public hit(pt: Point, padding = 0) {
-    return pt.x > this.x - padding && pt.x < this.maxX + padding && pt.y > this.y - padding && pt.y < this.maxY + padding;
+  public hit(x: number, y: number, padding = 0) {
+    return x > this.minX - padding && x < this.maxX + padding && y > this.minY - padding && y < this.maxY + padding;
   }
 
   public hitBBox(bbox: BBox) {

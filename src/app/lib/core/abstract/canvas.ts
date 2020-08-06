@@ -13,7 +13,6 @@ export abstract class AbstractCanvas extends Base implements GCanvas {
     this.initContainer();
     this.initDom();
     this.initEvents();
-    this.initShape();
   }
 
   getDefaultCfg() {
@@ -52,12 +51,6 @@ export abstract class AbstractCanvas extends Base implements GCanvas {
    * 初始化绑定的事件
    */
   initEvents() {}
-
-  /**
-   * @protected
-   * 初始化形状
-   */
-  initShape() {}
 
   /**
    * 修改画布对应的 DOM 的大小

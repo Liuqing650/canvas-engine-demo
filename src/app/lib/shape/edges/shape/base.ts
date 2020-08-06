@@ -1,13 +1,12 @@
-import { ShapeOption, AnchorPoint } from 'src/app/lib/interface';
-import { Node } from '../../nodes';
+import { ShapeOption, EdgeConfig } from 'src/app/lib/interface';
 import { BBox } from 'src/app/lib/shape/bbox';
 import { merge } from 'src/app/lib/util';
+import { Edge } from '..';
 
 export const baseShape: ShapeOption = {
   getDefaultOptions() {
     return {
       style: {
-        fillStyle: '#0000ff',
         strokeStyle: '#222',
       },
       labelStyle: {
@@ -20,43 +19,36 @@ export const baseShape: ShapeOption = {
         textAlign: 'center',
         textBaseline: 'middle',
         background: ''
-      },
+      }
     };
   },
   getOptions() {
     const defaultOptions = this.getDefaultOptions();
     return merge(defaultOptions, this.options);
   },
-  getBBox(node: Node): BBox {
-    return node.bbox;
+  getBBox(edge: Edge) {
+    return edge.getEdgeBBox();
   },
-  draw(ctx: CanvasRenderingContext2D, node: Node) {
+  draw(ctx: CanvasRenderingContext2D, node: Edge) {
     // 绘制包裹区域
     this.drawContainer(ctx, node);
     // 绘制文字
-    this.drawText(ctx, node);
+    // this.drawText(ctx, node);
   },
-  drawContainer(ctx: CanvasRenderingContext2D, node: Node) {
+  drawContainer(ctx: CanvasRenderingContext2D, node: Edge) {
     const { style } = this.getOptions();
 
-    const bbox: BBox = this.getBBox(node);
+    const { source, target } = this.getBBox(node);
     ctx.save();
     ctx.beginPath();
-    ctx.ellipse(
-      bbox.center.x,
-      bbox.center.y,
-      bbox.width / 2,
-      bbox.height / 2,
-      0,
-      0,
-      Math.PI * 2
-    );
+    ctx.moveTo(source.x, source.y);
+    ctx.lineTo(target.x, target.y);
     node.setAttr(ctx, style || {});
     ctx.fill();
     ctx.stroke();
     ctx.restore();
   },
-  drawText(ctx: CanvasRenderingContext2D, node: Node) {
+  drawText(ctx: CanvasRenderingContext2D, node: Edge) {
     const label = node.model.label;
     const bbox: BBox = this.getBBox(node);
     const { labelStyle } = this.getOptions();
@@ -73,5 +65,5 @@ export const baseShape: ShapeOption = {
     }
     ctx.fillText(label, bbox.center.x, bbox.center.y);
     ctx.restore();
-  },
+  }
 };

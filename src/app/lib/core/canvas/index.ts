@@ -1,13 +1,15 @@
 import { getPixelRatio, throttleArray } from '../../util/util';
 import { AbstractCanvas } from '../abstract';
-import { NodeConfig } from '../../interface';
+import { NodeConfig, GraphData, EdgeConfig } from '../../interface';
 import { Node } from '../../shape/nodes';
 import { Point } from '../../shape/point';
 import { EventController } from '../event';
+import { Edge } from '../../shape/edges';
 
 export class Canvas extends AbstractCanvas {
 
   public nodes: Node[] = [];
+  public edges: Edge[] = [];
 
   // 预渲染的节点,将会在鼠标谈起时触发
   public preparNode: NodeConfig;
@@ -100,23 +102,35 @@ export class Canvas extends AbstractCanvas {
 
   /**
    * 读取图形数据
-   * @param data NodeConfig[]
+   * @param data GraphData
    * @param isThrottle boolean 是否进行节流渲染
    */
-  read(data: NodeConfig[], isThrottle?: boolean): boolean {
+  read(data: GraphData, isThrottle?: boolean): boolean {
 
     this.clear();
 
-    if (!data || data.length === 0) {
+    console.log('data----->', data);
+
+    const nodes: NodeConfig[] = data.nodes;
+    const edges: EdgeConfig[] = data.edges;
+
+    if (!nodes || nodes.length === 0) {
       console.warn('没有任何节点渲染');
       return false;
     }
 
     // 实例化节点
-    for (let i = 0; i < data.length; i++) {
-      const nodeConfig: NodeConfig = data[i];
+    for (let i = 0; i < nodes.length; i++) {
+      const nodeConfig: NodeConfig = nodes[i];
       const node = new Node(nodeConfig);
       this.nodes.push(node);
+    }
+
+    // 实例化边
+    for (let i = 0; i < edges.length; i++) {
+      const edgeConfig: EdgeConfig = edges[i];
+      const edge = new Edge(edgeConfig, this);
+      this.edges.push(edge);
     }
 
     // 绘制节点
@@ -127,11 +141,19 @@ export class Canvas extends AbstractCanvas {
       throttleArray(this.nodes, (node: Node) => {
         node.draw(context);
       }, 60, 10);
+      // 节流渲染
+      throttleArray(this.edges, (edge: Edge) => {
+        edge.draw(context);
+      }, 60, 10);
     } else {
       // 直接渲染
       for (let i = 0; i < this.nodes.length; i++) {
         const node = this.nodes[i];
         node.draw(context);
+      }
+      for (let i = 0; i < this.edges.length; i++) {
+        const edge = this.edges[i];
+        edge.draw(context);
       }
     }
     return true;
@@ -168,16 +190,42 @@ export class Canvas extends AbstractCanvas {
   // canvas绘制分层级,具有先后顺序,所以倒序才是从最顶层开始
   inNodes(pt: Point, nodes: Node[]) {
     for (let i = nodes.length - 1; i > -1; --i) {
+      const anchor = this.inNodeAnchor(pt, nodes[i]);
+      if (anchor) {
+        return anchor;
+      }
       const node = this.inNode(pt, nodes[i]);
-      if (node) {
-        return node;
+      const target = this.inNodeShape(pt, nodes[i]);
+      if (node || target) {
+        return node || target;
       }
     }
     return null;
   }
+
   // 检测是否碰到该区域
   inNode(pt: Point, node: Node): Node {
     if (node.hit(pt.x, pt.y)) {
+      return node;
+    }
+    return null;
+  }
+
+  // 检测是否碰到该区域内的相关形状
+  inNodeShape(pt: Point, node: Node): Node {
+    const target = node.hitShape(pt.x, pt.y);
+    if (target) {
+      node.target = target;
+      return node;
+    }
+    return null;
+  }
+
+  // 检测是否碰到该区域内的相关形状
+  inNodeAnchor(pt: Point, node: Node): Node {
+    const anchor = node.hitAnchor(pt.x, pt.y);
+    if (anchor) {
+      node.anchorIndex = anchor.anchorIndex;
       return node;
     }
     return null;
@@ -232,6 +280,9 @@ export class Canvas extends AbstractCanvas {
     for (let idx = 0; idx < this.nodes.length; idx++) {
       this.nodes[idx].draw(context);
     }
+    for (let idx = 0; idx < this.edges.length; idx++) {
+      this.edges[idx].draw(context);
+    }
     this.rendering = false;
   }
   clearCanvas() {
@@ -250,12 +301,12 @@ export class Canvas extends AbstractCanvas {
     super.clear();
     this.clearCanvas();
     this.nodes = [];
+    this.edges = [];
   }
 
   destroy() {
     super.destroy();
     this.clear();
     this.destroyEvent();
-    this.nodes = [];
   }
 }

@@ -8,10 +8,27 @@ export interface BBox {
   minY: number;
   maxX: number;
   maxY: number;
-  centerX: number;
-  centerY: number;
+  centerX?: number;
+  centerY?: number;
   width: number;
   height: number;
+  // 形状名称
+  name?: string;
+  // 层级
+  zIndex?: number;
+}
+
+export interface BBoxConfig {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  // 形状名称
+  name?: string;
+  // 层级
+  zIndex?: number;
+  // 锚点系数
+  anchorIndex?: number;
 }
 
 export type LabelStyle = Partial<{
@@ -41,20 +58,26 @@ export type ILabelConfig = Partial<{
   style: LabelStyle;
 }>;
 
+export type AnchorStyle = Partial<{
+  [key: string]: unknown;
+  radius: number;
+}>;
+
 export type ModelStyle = Partial<{
-  style: any;
-  labelStyle: LabelStyle;
+  style?: any;
+  labelStyle?: LabelStyle;
+  anchorStyle?: AnchorStyle;
 }>;
 
 export interface ModelConfig extends ModelStyle {
   [key: string]: unknown;
+  x?: number;
+  y?: number;
   // 节点或边的类型
   type?: string;
   label?: string;
   groupId?: string;
   description?: string;
-  x?: number;
-  y?: number;
 }
 
 type ColorType = string | null;
@@ -94,19 +117,37 @@ export interface ShapeOption {
   options?: ShapeModelOption;
   draw?: (ctx: CanvasRenderingContext2D, item: Node | Item) => void;
 }
+
+export interface AnchorPoint {
+  x: number;
+  y: number;
+  anchorIndex?: number;
+}
+
 export interface NodeConfig extends ModelConfig {
   id?: string;
   width: number;
   height: number;
   shapeName?: string;
+  anchor?: AnchorPoint[] | boolean;
 }
 
 export interface EdgeConfig extends ModelConfig {
-  id: string;
+  id?: string;
   source?: string;
   target?: string;
   sourceNode?: Node;
   targetNode?: Node;
+  shapeName?: string;
+  sourcePoint?: AnchorPoint;
+  targetPoint?: AnchorPoint;
+  sourceAnchorIndex?: number;
+  targetAnchorIndex?: number;
 }
 
 export type ItemConfig = NodeConfig | EdgeConfig;
+
+export interface GraphData {
+  nodes: NodeConfig[];
+  edges: EdgeConfig[];
+}

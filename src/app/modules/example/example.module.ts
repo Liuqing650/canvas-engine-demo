@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CanvasExampleComponent } from './canvas-example/canvas-example.component';
 import { ExampleRoutingModule } from './example-routing.module';
+import { WebGlComponent } from './web-gl/web-gl.component';
 
 @NgModule({
   declarations: [
     CanvasExampleComponent,
+    WebGlComponent,
   ],
   imports: [
     CommonModule,
