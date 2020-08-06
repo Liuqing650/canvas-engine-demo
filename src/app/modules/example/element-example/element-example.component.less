@@ -1,0 +1,22 @@
+@color: #7202bb;
+@hover-color: rgba(113, 2, 187, 0.5);
+@hover-active: rgba(113, 2, 187, 0.2);
+
+:host {
+  display: block;
+  width: 100%;
+
+  & > div {
+    box-sizing: border-box;
+  }
+}
+
+.graphcontainer {
+  width: 800px;
+  height: 600px;
+  min-width: 200px;
+  position: relative;
+  background: #fff;
+  border: 1px solid @color;
+  margin: 50px auto;
+}

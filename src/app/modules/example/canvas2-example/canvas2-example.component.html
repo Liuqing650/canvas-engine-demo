@@ -1,0 +1,10 @@
+<div class="flow">
+  <div class="left">
+    <div *ngFor="let item of items">
+      <a draggable="true" class="item" (dragstart)="onDragStart($event, item)">{{item.label}}</a>
+    </div>
+  </div>
+  <div class="right">
+    <div id="diagramContainer" class="graphcontainer" #graphcontainer></div>
+  </div>
+</div>
