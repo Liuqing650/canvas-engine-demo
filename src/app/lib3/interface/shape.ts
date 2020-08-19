@@ -2,7 +2,8 @@
 export type ShapeStyle = Partial<{
   x: number;
   y: number;
-  r: number;width: number;
+  r: number;
+  width: number;
   height: number;
   offset: number | number[];
   stroke: string | null;
@@ -25,3 +26,11 @@ export type ShapeStyle = Partial<{
   position: string;
   fontSize: number;
 }>;
+
+export interface ShapeOption {
+  name?: string;
+  option: object;
+  draw: (ctx: CanvasRenderingContext2D, option: any) => void;
+  // update: (ctx: CanvasRenderingContext2D, option: any) => void;
+  [key: string]: any;
+}

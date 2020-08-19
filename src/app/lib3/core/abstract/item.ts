@@ -1,13 +1,13 @@
-import { GItemModel } from './interface';
+import { GItemOption } from './interface';
 import { mix } from '../../utils';
 
 export abstract class AbstractItem {
 
-  public model: GItemModel;
-  
-  constructor(option: GItemModel) {
+  public option: GItemOption;
+
+  constructor(option: GItemOption) {
     const defaultOption = this.getDefaultOption();
-    this.model = mix(defaultOption, option);
+    this.option = mix(defaultOption, option);
   }
 
   public getDefaultOption() {
@@ -21,14 +21,10 @@ export abstract class AbstractItem {
   abstract draw(ctx: CanvasRenderingContext2D): void;
 
   public get(key: string) {
-    return this[key];
+    return this.option[key];
   }
 
   public set(key: string, value: any) {
-    this[key] = value;
-  }
-
-  public getModel(): GItemModel {
-    return this.model;
+    this.option[key] = value;
   }
 }

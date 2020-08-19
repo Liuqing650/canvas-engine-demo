@@ -1,9 +1,9 @@
-import { ShapeOption } from '../../shapes/interface';
+import { ShapeOption } from '../../interface';
 
 interface Shapes {
   [type: string]: {
     [key: string]: ShapeOption
-  }
+  };
 }
 
 class ShapeStore {

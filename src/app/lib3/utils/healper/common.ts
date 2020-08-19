@@ -1,4 +1,4 @@
-import { isNumber, isArray } from './dataType';
+import { isNumber, isArray, isNil } from './dataType';
 
 /**
  * 衍生样式数据，会像css中的样式一样进行自动扩展
@@ -6,7 +6,7 @@ import { isNumber, isArray } from './dataType';
  */
 export function derivativeStyle(data?: number | number[]): number[] {
   const defaultData = [0, 0, 0, 0];
-  
+
   if (!data) {
     return defaultData;
   }
@@ -31,7 +31,6 @@ export function derivativeStyle(data?: number | number[]): number[] {
         break;
     }
   }
-  
   return defaultData;
 }
 
@@ -52,4 +51,27 @@ export function derivativeStyleObject(data: number | number[]): {
     bottom: styleData[2],
     left: styleData[3],
   };
+}
+
+export function toString(value: any) {
+  if (isNil(value)) {
+    return '';
+  }
+  return value.toString();
+}
+
+export const isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
+
+export function getPixelRatio() {
+  return window ? window.devicePixelRatio : 1;
+}
+
+// 首字母大写
+export function upperFirst(value: string) {
+  const str = toString(value);
+  return str.charAt(0).toUpperCase() + str.substring(1);
+}
+
+export function uuid8() {
+  return (((1 + Math.random()) * 0x100000000) | 0).toString(16).substring(1);
 }

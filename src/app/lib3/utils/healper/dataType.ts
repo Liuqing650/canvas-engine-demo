@@ -34,14 +34,14 @@ export function isInteger(data: any): boolean {
   if (!isNumber(data)) {
     return false;
   }
-  return parseInt(data) === parseFloat(data);
+  return parseInt(data, 10) === parseFloat(data);
 }
 
 export function isFloat(data: any): boolean {
   if (!isNumber(data)) {
     return false;
   }
-  return parseInt(data) !== parseFloat(data);
+  return parseInt(data, 10) !== parseFloat(data);
 }
 
 export function isNull(data: any): boolean {

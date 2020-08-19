@@ -2,7 +2,7 @@ export interface GObject {
   [key: string]: any;
 }
 
-export interface GItemModel {
+export interface GItemOption {
   x: number;
   y: number;
 }

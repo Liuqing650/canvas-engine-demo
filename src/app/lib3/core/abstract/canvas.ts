@@ -1,4 +1,7 @@
 import { GObject } from './interface';
+import { isBrowser } from '../../utils';
+
+const PX_SUFFIX = 'px';
 
 export abstract class AbstractCanvas {
 
@@ -6,28 +9,46 @@ export abstract class AbstractCanvas {
   public ctx: CanvasRenderingContext2D | null;
   public option: GObject;
 
-  constructor(cfg: any) {
-    this.init(cfg);
+  constructor(option: any) {
+    this.init(option);
   }
 
-  private init(cfg: any) {
-    this.option = Object.assign({}, cfg);
+  private init(option: any) {
+    this.option = Object.assign({}, option);
     this.initCanvas();
   }
 
   public initCanvas() {
     this.canvasElement = this.createCanvas();
     this.ctx = this.getCanvasContext();
+    // 附加到容器
+    const container = this.get('container');
+    container.appendChild(this.canvasElement);
+    // 设置初始宽度
+    this.setCanvasSize(this.get('width'), this.get('height'));
   }
 
   abstract createCanvas(): HTMLCanvasElement;
+
+  /**
+   * 修改画布对应的 DOM 的大小
+   * @param {number} width  宽度
+   * @param {number} height 高度
+   */
+  public setCanvasSize(width: number, height: number) {
+    const el = this.canvasElement;
+    if (isBrowser) {
+      el.style.width = width + PX_SUFFIX;
+      el.style.height = height + PX_SUFFIX;
+    }
+  }
 
   public getCanvasContext() {
     const context = this.canvasElement.getContext('2d');
     return context;
   }
 
-  public getContext(): CanvasRenderingContext2D | null{
+  public getContext(): CanvasRenderingContext2D | null {
     return this.ctx;
   }
 
