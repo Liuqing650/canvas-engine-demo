@@ -1,3 +1,15 @@
+<div class="toolBar">
+  <a class="btn" (click)="throttleData()">节流渲染 {{throttleNumber}} 个数据</a>
+  <a class="btn" (click)="moreData()">直接渲染 {{moreNumber}} 个数据</a>
+</div>
+<div class="form">
+  <div class="formItem">
+    节流渲染节点个数: <input type="text" name="throttleNumber" [(ngModel)]="throttleNumber" />
+  </div>
+  <div class="formItem">
+    节流渲染节点个数: <input type="text" name="moreNumber" [(ngModel)]="moreNumber" />
+  </div>
+</div>
 <div class="flow">
   <div class="left">
     <div *ngFor="let item of items">

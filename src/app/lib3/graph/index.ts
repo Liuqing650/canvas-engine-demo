@@ -4,11 +4,12 @@ import { Node } from '../modules/node';
 import { GraphData, GraphOption, NodeOption } from '../interface';
 import '../shapes/node';
 import { EventController } from '../core/event';
-import { BBox } from '../modules/item/bbox';
+import { throttleArray } from '../utils';
 
 const LEFT_BUTTON = 0;
 export class Graph extends Container {
   public canvas: Canvas;
+  public activeCanvas: Canvas;
 
   public nodes: Node[] = [];
   public activeNodes: Node[] = [];
@@ -33,13 +34,17 @@ export class Graph extends Container {
   private initGraphContainer() {
     const size = this.getSize();
     const container = this.get('container');
+    const behaviorLayer = this.createDivElement();
     this.canvas = new Canvas({ ...size, container });
+    this.activeCanvas = new Canvas({ ...size, container });
+    this.appendElement(behaviorLayer);
+    this.set('behaviorLayer', behaviorLayer);
   }
 
   private initEvent() {
     const self = this;
     const eventController = new EventController({
-      canvas: self.canvas,
+      element: this.get('behaviorLayer'),
       graph: self,
     });
     this.set('eventController', eventController);
@@ -124,7 +129,8 @@ export class Graph extends Container {
     const { x, y } = this.draggableBox;
     item.updatePosition(x + movex, y + movey);
     // this.localRefresh(this.activeNodes);
-    this.refresh(this.nodes);
+    // this.refresh(this.nodes);
+    this.draw(this.activeNodes, this.activeCanvas);
   }
   /** 图形拖拽完 */
   public onShapeDrop({ event, item }) {
@@ -132,12 +138,14 @@ export class Graph extends Container {
       node.show();
     });
     this.activeNodes = [];
+    this.draw(this.activeNodes, this.activeCanvas);
+    this.render(this.nodes);
   }
 
   public checkMouseShape() {
     const { x, y } = this.mouseDown;
     function eachHit<T>(data: T[], type: string) {
-      for (let index = 0; index < data.length; index++) {
+      for (let index = data.length; index > 0; index--) {
         const item: T = data[index];
         if (item && (item as any).hit(x, y)) {
           return {type, item} as { type: string; item: T; };
@@ -194,7 +202,8 @@ export class Graph extends Container {
       }
       node.setStatus('active', active);
     });
-    this.refresh(this.nodes);
+    this.render(this.nodes);
+    this.draw(this.activeNodes, this.activeCanvas);
   }
 
   public resetGraphData() {
@@ -202,7 +211,7 @@ export class Graph extends Container {
     this.nodes = [];
   }
 
-  public read(data: GraphData) {
+  public read(data: GraphData, isThrottle?: boolean) {
     this.resetGraphData();
     if (data.nodes && data.nodes.length) {
       const nodes = data.nodes || [];
@@ -212,20 +221,29 @@ export class Graph extends Container {
         this.nodes.push(node);
       }
     }
-    this.render(this.nodes);
+    this.render(this.nodes, isThrottle);
   }
 
-  public render(nodes: Node[]) {
+  public render(nodes: Node[], isThrottle?: boolean) {
     if (!nodes || nodes.length === 0) {
       return null;
     }
     this.canvas.clearCanvas();
     const ctx = this.canvas.ctx;
-    nodes.forEach((node: Node) => {
-      if (node.isShow()) {
+    if (isThrottle) {
+      // 节流渲染
+      throttleArray(this.nodes, (node: Node) => {
         node.draw(ctx);
+      }, 60, 10);
+    } else {
+      // 直接渲染
+      for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        if (node.isShow()) {
+          node.draw(ctx);
+        }
       }
-    });
+    }
   }
 
   public refresh(nodes: Node[]) {
@@ -239,11 +257,12 @@ export class Graph extends Container {
     });
   }
 
-  public loaclRefresh(nodes: Node[]) {
+  public draw(nodes: Node[], canvas: Canvas) {
+    const ctx = canvas.ctx;
+    canvas.clearCanvas();
     if (!nodes || nodes.length === 0) {
       return null;
     }
-    const ctx = this.canvas.ctx;
     nodes.forEach((node: Node) => {
       node.draw(ctx);
     });

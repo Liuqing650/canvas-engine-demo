@@ -1,5 +1,5 @@
 import { Base } from './base';
-import { isString } from '../../utils';
+import { isString, isBrowser } from '../../utils';
 
 export abstract class AbstractContainer extends Base {
 
@@ -15,4 +15,5 @@ export abstract class AbstractContainer extends Base {
       this.set('container', container);
     }
   }
+
 }

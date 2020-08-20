@@ -26,6 +26,8 @@ export class Canvas2ExampleComponent implements OnInit {
     width: 800,
     height: 600,
   };
+  public throttleNumber = 1000;
+  public moreNumber = 10000;
 
   public graph: Graph;
 
@@ -45,8 +47,8 @@ export class Canvas2ExampleComponent implements OnInit {
     //   ]
     // });
     this.graph.read({
-      nodes: this.createMoreNode(300, 500, 500)
-    });
+      nodes: this.createMoreNode(8000, 500, 500)
+    }, true);
   }
 
   getNodeOption(x: number, y: number, width?: number, height?: number) {
@@ -72,6 +74,20 @@ export class Canvas2ExampleComponent implements OnInit {
       output.push(nodeConfig);
     }
     return output;
+  }
+
+  throttleData() {
+    const size = this.size;
+    const number = isNaN(Number(this.throttleNumber)) ? 0 : Number(this.throttleNumber);
+    const nodes = this.createMoreNode(number, size.width - 100, size.height - 100);
+    this.graph.read({nodes}, true);
+  }
+
+  moreData() {
+    const size = this.size;
+    const number = isNaN(Number(this.throttleNumber)) ? 0 : Number(this.throttleNumber);
+    const nodes = this.createMoreNode(number, size.width - 100, size.height - 100);
+    this.graph.read({nodes});
   }
 
   onDragStart(event: DragEvent, item: any) {
