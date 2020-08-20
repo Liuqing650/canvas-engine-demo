@@ -48,8 +48,8 @@ export const baseNode: ShapeOption = {
     ctx.fill();
     ctx.stroke();
     ctx.restore();
-    console.log('bbox------>', bbox);
-    console.log('绘制图像', style);
+    // console.log('bbox------>', bbox);
+    // console.log('绘制图像', style);
   },
   attr(ctx: CanvasRenderingContext2D, attr: object) {
     applyAttrsToContext(ctx, attr);

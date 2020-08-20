@@ -38,10 +38,14 @@ export class Canvas2ExampleComponent implements OnInit {
       width: size.width,
       height: size.height,
     });
+    // this.graph.read({
+    //   nodes: [
+    //     this.getNodeOption(120, 40, 120, 120),
+    //     this.getNodeOption(160, 80, 120, 120),
+    //   ]
+    // });
     this.graph.read({
-      nodes: [
-        this.getNodeOption(120, 40, 120, 120),
-      ]
+      nodes: this.createMoreNode(300, 500, 500)
     });
   }
 
@@ -53,6 +57,21 @@ export class Canvas2ExampleComponent implements OnInit {
       y: y || 60,
       shapeName: 'base-node'
     };
+  }
+
+  createMoreNode(count: number, x: number, y: number, r?: number) {
+    const output = [];
+    for (let idx = 0; idx < count; idx++) {
+      const nodeConfig = {
+        width: r || 60,
+        height: r || 60,
+        x: Math.floor(Math.random() * x),
+        y: Math.floor(Math.random() * y),
+        shapeName: 'base-node'
+      };
+      output.push(nodeConfig);
+    }
+    return output;
   }
 
   onDragStart(event: DragEvent, item: any) {

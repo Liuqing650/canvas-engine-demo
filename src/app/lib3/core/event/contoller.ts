@@ -45,7 +45,17 @@ export class EventController {
   }
 
   public triggerEvent(eventName: string, event: any) {
-    this.graph.emit(eventName, {event});
+    if (eventName === 'dragover') {
+      this.ondragover(event);
+    } else {
+      this.graph.emit(eventName, {event});
+    }
+  }
+
+  public ondragover = (event: any) => {
+    // 触发ondrop事件，必须在这个位置阻止浏览器的默认行为,否则监听不到
+    event.preventDefault();
+    this.graph.emit('ondragover', {event, canvas: this.canvas});
   }
 
   /** 销毁所有事件 */

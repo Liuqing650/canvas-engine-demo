@@ -21,4 +21,10 @@ export class Node extends Item {
     };
     return bboxOption;
   }
+
+  public updatePosition(x: number, y: number) {
+    this.set('x', x);
+    this.set('y', y);
+    this.updateBBox();
+  }
 }

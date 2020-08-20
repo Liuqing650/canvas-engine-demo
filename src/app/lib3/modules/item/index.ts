@@ -94,4 +94,17 @@ export abstract class Item extends AbstractItem {
     });
     return output;
   }
+
+  public hide() {
+    this.set('hide', true);
+  }
+
+  public show() {
+    this.set('hide', false);
+  }
+
+  public isShow() {
+    const isHide = this.get('hide');
+    return !isHide;
+  }
 }
