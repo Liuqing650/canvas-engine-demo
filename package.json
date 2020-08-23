@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "homepage": "https://Liuqing650.github.io/canvas-engine-demo",
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.14",
