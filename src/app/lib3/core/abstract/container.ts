@@ -3,8 +3,8 @@ import { isString, isBrowser } from '../../utils';
 
 export abstract class AbstractContainer extends Base {
 
-  constructor(cfg: any) {
-    super(cfg);
+  constructor(option: any) {
+    super(option);
     this.initContainer();
   }
 

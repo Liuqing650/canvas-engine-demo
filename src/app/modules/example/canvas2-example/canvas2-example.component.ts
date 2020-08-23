@@ -26,10 +26,12 @@ export class Canvas2ExampleComponent implements OnInit {
     width: 800,
     height: 600,
   };
-  public throttleNumber = 1000;
-  public moreNumber = 10000;
+  public throttleNumber = 1;
+  public moreNumber = 1;
 
   public graph: Graph;
+
+  public isHightRender = false;
 
   constructor() { }
 
@@ -46,9 +48,10 @@ export class Canvas2ExampleComponent implements OnInit {
     //     this.getNodeOption(160, 80, 120, 120),
     //   ]
     // });
-    this.graph.read({
-      nodes: this.createMoreNode(8000, 500, 500)
-    }, true);
+    // this.graph.read({
+    //   nodes: this.createMoreNode(10, 500, 500)
+    // }, true);
+    this.isHightRender = this.graph.highRender;
   }
 
   getNodeOption(x: number, y: number, width?: number, height?: number) {
@@ -85,7 +88,7 @@ export class Canvas2ExampleComponent implements OnInit {
 
   moreData() {
     const size = this.size;
-    const number = isNaN(Number(this.throttleNumber)) ? 0 : Number(this.throttleNumber);
+    const number = isNaN(Number(this.moreNumber)) ? 0 : Number(this.moreNumber);
     const nodes = this.createMoreNode(number, size.width - 100, size.height - 100);
     this.graph.read({nodes});
   }
@@ -93,6 +96,11 @@ export class Canvas2ExampleComponent implements OnInit {
   onDragStart(event: DragEvent, item: any) {
     // const baseConfig = this.createShape(item);
     // this.canvas.addPreparNode(baseConfig);
+  }
+
+  setActive(active: boolean) {
+    this.isHightRender = active;
+    this.graph.startHighRender(active);
   }
 
 }

@@ -12,6 +12,9 @@ class ShapeStore {
   public addShape(type: string, name: string, shapeOption: ShapeOption, extendShapeName?: string) {
     const extendShape = extendShapeName ? this.getShape(type, extendShapeName) : null;
     shapeOption.name = name;
+    if (!this.shapes) {
+      this.shapes = {};
+    }
     if (!this.shapes[type]) {
       this.shapes[type] = {};
     }
@@ -23,15 +26,19 @@ class ShapeStore {
     }
   }
 
-  getShape(type: string, name: string): ShapeOption {
+  public getShape(type: string, name: string): ShapeOption {
     if (!this.shapes[type]) {
       return undefined;
     }
     return this.shapes[type][name];
   }
 
-  get(key: string) {
+  public get(key: string) {
     return this[key];
+  }
+
+  public destroy() {
+    this.shapes = undefined;
   }
 }
 

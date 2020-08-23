@@ -1,47 +1,44 @@
 import { Canvas } from '../core/canvas';
-import { Container } from '../core/container';
+import { GraphBase } from './base';
 import { Node } from '../modules/node';
-import { GraphData, GraphOption, NodeOption } from '../interface';
-import '../shapes/node';
+import { Item } from '../modules/item';
+import { GraphData, GraphOption, NodeOption, GPlugin } from '../interface';
 import { EventController } from '../core/event';
 import { throttleArray } from '../utils';
+import { DragNode, CanvasMove } from '../plugins';
+import '../shapes/node';
 
-const LEFT_BUTTON = 0;
-export class Graph extends Container {
+const LEFT_BUTTON = 1;
+export class Graph extends GraphBase {
   public canvas: Canvas;
   public activeCanvas: Canvas;
 
   public nodes: Node[] = [];
   public activeNodes: Node[] = [];
+  public highRender = true;
 
   private mouseDown: { x: number; y: number };
-  public draggableBox: {x: number, y: number};
   private moveInShape: { type: string; item: Node };
   private draggingShape: { type: string; item: Node };
   private dragging: boolean;
 
   constructor(option: GraphOption) {
     super(option);
-    this.initGraph();
   }
 
-  private initGraph() {
-    this.initGraphContainer();
-    this.initEvent();
-    this.subscript();
+  public getDefaultOption(): GraphOption {
+    return {
+      container: null,
+      width: 500,
+      height: 500,
+      plugins: [
+        new DragNode(),
+        new CanvasMove(),
+      ],
+    };
   }
 
-  private initGraphContainer() {
-    const size = this.getSize();
-    const container = this.get('container');
-    const behaviorLayer = this.createDivElement();
-    this.canvas = new Canvas({ ...size, container });
-    this.activeCanvas = new Canvas({ ...size, container });
-    this.appendElement(behaviorLayer);
-    this.set('behaviorLayer', behaviorLayer);
-  }
-
-  private initEvent() {
+  public initEvent() {
     const self = this;
     const eventController = new EventController({
       element: this.get('behaviorLayer'),
@@ -50,102 +47,121 @@ export class Graph extends Container {
     this.set('eventController', eventController);
   }
 
+  public initPlugins() {
+    const plugins: GPlugin[] = this.get('plugins');
+    if (!plugins || plugins.length === 0) {
+      return null;
+    }
+    const graph = this;
+    for (let idx = 0; idx < plugins.length; idx++) {
+      const plugin = plugins[idx];
+      plugin.invoke(graph);
+    }
+  }
+
+  public addPlugin(plugin: GPlugin): void {
+    if (!plugin) {
+      return null;
+    }
+    let plugins: GPlugin[] = this.get('plugins');
+    if (!plugins || plugins.length === 0) {
+      plugins = [];
+    }
+    const graph = this;
+    plugin.invoke(graph);
+    plugins.push(plugin);
+  }
+
+  public removePlugin(plugin: GPlugin): void {
+    const plugins = this.get('plugins');
+    const index = plugins.indexOf(plugin);
+    if (index >= 0) {
+      plugin.destroy();
+      plugins.splice(index, 1);
+    }
+  }
+
   public subscript() {
     this.on('mousedown', this.onMouseDown);
     this.on('mousemove', this.onMouseMove);
     this.on('mouseup', this.onMouseUp);
-    this.on('node:dragstart', this.onShapeDragStart);
-    this.on('node:drag', this.onShapeDrag);
-    this.on('node:drop', this.onShapeDrop);
   }
 
   public onMouseDown({ event }) {
+    this.resetMouseRecord();
     if (event.button !== 0) {
       return;
     }
     this.mouseDown = {x: event.offsetX, y: event.offsetY};
-    const shape = this.checkMouseShape();
+    const shape = this.checkMouseShape<Node>(this.nodes, 'node');
     if (shape) {
+      this.moveInShape = shape;
       this.setActiveShape(shape);
-      this.refreshActiveShape();
+      if (this.highRender) {
+        this.refreshActiveShape();
+      }
       this.emit(`mousedown:${shape.type}`, {event, item: shape.item});
     }
   }
 
   public onMouseMove({ event }) {
-    if (this.mouseDown && event.buttons !== 1) {
-      this.onMouseDown({ event });
+    if (!this.mouseDown || event.buttons !== LEFT_BUTTON) {
       return;
     }
     if (this.dragging) {
       if (this.draggingShape) {
         const { type, item } = this.draggingShape;
-        this.emit(`${type}:drag`, {event, item});
+        this.emit(`${type}:drag`, {event, item, ...this.mouseDown});
       } else {
-        this.emit('drag', {event});
+        this.emit('canvas:drag', {event});
       }
     } else if (this.mouseDown) {
       this.dragging = true;
       if (this.moveInShape) {
         this.draggingShape = this.moveInShape;
         const { type, item } = this.draggingShape;
-        this.emit(`${type}:dragstart`, {event, item});
+        this.emit(`${type}:dragstart`, {event, item, ...this.mouseDown});
+      } else {
+        this.emit('canvas:dragstart', {event, ...this.mouseDown});
       }
-      this.emit('dragstart', {event});
     }
   }
 
   public onMouseUp({ event }) {
+    if (!this.moveInShape) {
+      return;
+    }
     if (this.mouseDown && event.button === LEFT_BUTTON) {
       const moveInShape = this.moveInShape;
       if (this.dragging) {
-        const draggingShape = this.draggingShape;
-        if (draggingShape) {
-          const { type, item } = draggingShape;
-          this.emit(`${type}:drop`, {event, item});
+        if (moveInShape) {
+          const draggingShape = this.draggingShape;
+          if (draggingShape) {
+            const { type, item } = draggingShape;
+            this.emit(`${type}:drop`, {event, item, ...this.mouseDown});
+          }
+          this.emit(`${moveInShape.type}:dragend`, {event, item: moveInShape.item, ...this.mouseDown});
+        } else {
+          this.emit('canvas:dragend', {event, ...this.mouseDown});
         }
-        this.emit(`${moveInShape.type}:dragend`, {event, item: moveInShape.item});
         this.draggingShape = undefined;
         this.dragging = false;
       } else {
         if (moveInShape) {
-          this.emit(`${moveInShape.type}:mouseup`, {event, item: moveInShape.item});
+          this.emit(`${moveInShape.type}:mouseup`, {event, item: moveInShape.item, ...this.mouseDown});
           this.moveInShape = undefined;
+        } else {
+          this.emit('canvas:mouseup', {event, ...this.mouseDown});
         }
       }
     }
     this.mouseDown = undefined;
   }
 
-  /** 图形拖拽 */
-  public onShapeDragStart({ event, item }: {event: MouseEvent; item: Node}) {
-    const bbox = item.getBBox();
-    this.draggableBox = {x: bbox.x, y: bbox.y};
-  }
-  /** 图形拖拽中 */
-  public onShapeDrag({ event, item }: {event: MouseEvent; item: Node}) {
-    const movex = (event.offsetX - this.mouseDown.x) << 0;
-    const movey = (event.offsetY - this.mouseDown.y) << 0;
-    const { x, y } = this.draggableBox;
-    item.updatePosition(x + movex, y + movey);
-    // this.localRefresh(this.activeNodes);
-    // this.refresh(this.nodes);
-    this.draw(this.activeNodes, this.activeCanvas);
-  }
-  /** 图形拖拽完 */
-  public onShapeDrop({ event, item }) {
-    this.activeNodes.forEach((node: Node) => {
-      node.show();
-    });
-    this.activeNodes = [];
-    this.draw(this.activeNodes, this.activeCanvas);
-    this.render(this.nodes);
-  }
-
-  public checkMouseShape() {
+  public checkMouseShape<N>(items: N[], itemType: string) {
     const { x, y } = this.mouseDown;
     function eachHit<T>(data: T[], type: string) {
-      for (let index = data.length; index > 0; index--) {
+      for (let index = data.length - 1; index >= 0; index--) {
         const item: T = data[index];
         if (item && (item as any).hit(x, y)) {
           return {type, item} as { type: string; item: T; };
@@ -153,19 +169,9 @@ export class Graph extends Container {
       }
       return null;
     }
-    const hitNode = eachHit<Node>(this.nodes, 'node');
+    const hitNode = eachHit<N>(items, itemType);
     if (hitNode) { return hitNode; }
     return null;
-  }
-
-  public packHitShape<T>(shape: T, type: string): { type: string; shape: T; } {
-    return {type, shape};
-  }
-
-  public changeSize(width: number, height: number) {
-    const size = this.getSize();
-    this.set('width', width || size.width);
-    this.set('height', height || size.height);
   }
 
   /**
@@ -174,7 +180,6 @@ export class Graph extends Container {
    * @description 将基于激活的项进行分类到 active{Shape} 中
    */
   public setActiveShape(activeShape: { type: string; item: Node }) {
-    this.moveInShape = activeShape;
     const { type, item } = activeShape;
     this.activeNodes = [];
     switch (type) {
@@ -202,17 +207,18 @@ export class Graph extends Container {
       }
       node.setStatus('active', active);
     });
-    this.render(this.nodes);
     this.draw(this.activeNodes, this.activeCanvas);
+    setTimeout(() => {
+      this.render();
+    }, 0);
   }
 
-  public resetGraphData() {
-    this.activeNodes = [];
-    this.nodes = [];
+  public getNodes(): Node[] {
+    return this.nodes;
   }
 
   public read(data: GraphData, isThrottle?: boolean) {
-    this.resetGraphData();
+    this.clear();
     if (data.nodes && data.nodes.length) {
       const nodes = data.nodes || [];
       for (let idx = 0; idx < nodes.length; idx++) {
@@ -221,10 +227,14 @@ export class Graph extends Container {
         this.nodes.push(node);
       }
     }
-    this.render(this.nodes, isThrottle);
+    this.render(isThrottle);
   }
 
-  public render(nodes: Node[], isThrottle?: boolean) {
+  public render(isThrottle?: boolean) {
+    this.renderShpae(this.nodes, isThrottle);
+  }
+
+  private renderShpae(nodes: Node[], isThrottle?: boolean) {
     if (!nodes || nodes.length === 0) {
       return null;
     }
@@ -233,39 +243,65 @@ export class Graph extends Container {
     if (isThrottle) {
       // 节流渲染
       throttleArray(this.nodes, (node: Node) => {
-        node.draw(ctx);
+        if (node && node.isShow()) {
+          node.draw(ctx);
+        }
       }, 60, 10);
     } else {
       // 直接渲染
       for (let i = 0; i < nodes.length; i++) {
         const node = nodes[i];
-        if (node.isShow()) {
+        if (node && node.isShow()) {
           node.draw(ctx);
         }
       }
     }
   }
 
-  public refresh(nodes: Node[]) {
-    if (!nodes || nodes.length === 0) {
-      return null;
-    }
-    this.canvas.clearCanvas();
-    const ctx = this.canvas.ctx;
-    nodes.forEach((node: Node) => {
-      node.draw(ctx);
-    });
+  public refresh() {
+    this.draw(this.nodes, this.canvas);
   }
 
-  public draw(nodes: Node[], canvas: Canvas) {
+  public drawActive() {
+    this.draw(this.activeNodes, this.activeCanvas);
+  }
+
+  public draw(nodes: Item[], canvas: Canvas) {
     const ctx = canvas.ctx;
     canvas.clearCanvas();
     if (!nodes || nodes.length === 0) {
       return null;
     }
-    nodes.forEach((node: Node) => {
+    nodes.forEach((node: Item) => {
       node.draw(ctx);
     });
+  }
+
+  public startHighRender(open?: boolean) {
+    this.highRender = !!open;
+    this.refresh();
+  }
+
+  public resetMouseRecord() {
+    this.mouseDown = undefined;
+    this.moveInShape = undefined;
+    this.draggingShape = undefined;
+    this.dragging = false;
+  }
+
+  public resetActiveShape() {
+    this.activeNodes = [];
+    if (this.activeCanvas) {
+      this.activeCanvas.clearCanvas();
+    }
+  }
+
+  public clear() {
+    this.nodes = [];
+    if (this.canvas) {
+      this.canvas.clearCanvas();
+    }
+    this.resetActiveShape();
   }
 
 }

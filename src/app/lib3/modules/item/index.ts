@@ -51,10 +51,11 @@ export abstract class Item extends AbstractItem {
     const top = pad[1];
     const right = pad[2];
     const bottom = pad[3];
-    const boxMinX = this.bbox.minX - left;
-    const boxMinY = this.bbox.minY - top;
-    const boxMaxX = this.bbox.maxX + right;
-    const boxMaxY = this.bbox.maxY + bottom;
+    const bbox = this.getBBox();
+    const boxMinX = bbox.minX - left;
+    const boxMinY = bbox.minY - top;
+    const boxMaxX = bbox.maxX + right;
+    const boxMaxY = bbox.maxY + bottom;
     if ((x >= boxMinX && x <= boxMaxX) && (y >= boxMinY && y <= boxMaxY)) {
       return true;
     }
@@ -72,6 +73,13 @@ export abstract class Item extends AbstractItem {
 
   public getBBox() {
     return this.bbox;
+  }
+
+  public translate(x: number, y: number) {
+    const bbox = this.getBBox();
+    this.set('x', bbox.x + x);
+    this.set('y', bbox.y + y);
+    this.updateBBox();
   }
 
   public setStatus(status: string, active?: boolean) {

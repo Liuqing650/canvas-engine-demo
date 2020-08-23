@@ -1,13 +1,15 @@
 <div class="toolBar">
   <a class="btn" (click)="throttleData()">节流渲染 {{throttleNumber}} 个数据</a>
   <a class="btn" (click)="moreData()">直接渲染 {{moreNumber}} 个数据</a>
+  <a class="btn" [ngClass]="{'active': isHightRender}" (click)="setActive(true)">加速模式</a>
+  <a class="btn" [ngClass]="{'active': !isHightRender}" (click)="setActive(false)">普通模式</a>
 </div>
 <div class="form">
   <div class="formItem">
     节流渲染节点个数: <input type="text" name="throttleNumber" [(ngModel)]="throttleNumber" />
   </div>
   <div class="formItem">
-    节流渲染节点个数: <input type="text" name="moreNumber" [(ngModel)]="moreNumber" />
+    直接渲染节点个数: <input type="text" name="moreNumber" [(ngModel)]="moreNumber" />
   </div>
 </div>
 <div class="flow">

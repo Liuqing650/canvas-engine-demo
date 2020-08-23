@@ -2,22 +2,23 @@ import { Graph } from '../../graph';
 
 // 监听的事件
 const EVENTS = [
+  'click',
   'mousedown',
   'mouseup',
-  // 'dblclick',
+  'dblclick',
   'mouseout',
   'mouseover',
   'mousemove',
   'mouseleave',
   'mouseenter',
-  // 'touchstart',
-  // 'touchmove',
-  // 'touchend',
+  'touchstart',
+  'touchmove',
+  'touchend',
   'dragenter',
   'dragover',
   'dragleave',
   'drop',
-  // 'contextmenu',
+  'contextmenu',
   'mousewheel',
 ];
 

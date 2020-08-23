@@ -86,18 +86,18 @@ export function uuid8() {
  */
 export function throttleArray(arr: any[], cb: Function, count: number, interval: number): void {
   let timer: any;
-  let index = 1;
+  let index = 0;
   const length = arr.length;
   function start() {
     for (let idx = 0; idx < Math.min(count || 1, length - index); idx++) {
-      const item = arr[index - 1];
+      const item = arr[index];
       index++;
       cb(item);
     }
   }
   function loop() {
     timer = setInterval(() => {
-      if (length - index === 0) {
+      if (length === 0) {
         clearInterval(timer);
       }
       start();

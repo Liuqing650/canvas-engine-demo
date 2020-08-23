@@ -3,28 +3,28 @@ import { GObject } from './interface';
 import { mix } from '../../utils';
 
 export abstract class Base extends Emiter {
-  public cfg: GObject;
+  public option: GObject;
 
-  constructor(cfg: any) {
+  constructor(option: any) {
     super();
-    const defaultCfg = this.getDefaultCfg();
-    this.cfg = mix(defaultCfg, cfg);
+    const defaultOption = this.getDefaultOption();
+    this.option = mix(defaultOption, option);
   }
 
-  public getDefaultCfg() {
+  public getDefaultOption() {
     return {};
   }
 
   public get(key: string) {
-    return this.cfg[key];
+    return this.option[key];
   }
 
   public set(key: string, value: any) {
-    this.cfg[key] = value;
+    this.option[key] = value;
   }
 
   public destroy() {
-    this.cfg = {
+    this.option = {
       destroyed: true,
     };
     this.off();
