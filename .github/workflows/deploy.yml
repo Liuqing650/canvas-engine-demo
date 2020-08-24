@@ -19,5 +19,5 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: feature--dev-2.0
+        BRANCH: gh-pages
         FOLDER: dist/canvas-engine-demo
