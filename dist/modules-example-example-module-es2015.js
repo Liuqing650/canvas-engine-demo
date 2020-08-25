@@ -25230,7 +25230,46 @@ ReactiveFormsModule.decorators = [
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"toolBar\">\n  <a class=\"btn\" (click)=\"singleData()\">渲染单个数据</a>\n  <a class=\"btn\" (click)=\"throttleData()\">节流渲染 {{throttleNumber}} 个数据</a>\n  <a class=\"btn\" (click)=\"moreData()\">直接渲染 {{moreNumber}} 个数据</a>\n  <a class=\"btn\" (click)=\"getBindEvent()\">查看当前已经绑定的事件</a>\n</div>\n<div class=\"form\">\n  <div class=\"formItem\">\n    节流渲染节点个数: <input type=\"text\" name=\"throttleNumber\" [(ngModel)]=\"throttleNumber\" />\n  </div>\n  <div class=\"formItem\">\n    节流渲染节点个数: <input type=\"text\" name=\"moreNumber\" [(ngModel)]=\"moreNumber\" />\n  </div>\n</div>\n<div class=\"flow\">\n  <div class=\"left\">\n    <div *ngFor=\"let item of items\">\n      <a draggable=\"true\" class=\"item\" (dragstart)=\"onDragStart($event, item)\" (touchstart)=\"onTouchstart(item)\">{{item.label}}</a>\n    </div>\n  </div>\n  <div class=\"right\">\n    <div id=\"diagramContainer\" class=\"graphcontainer\" #graphcontainer></div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"toolBar\">\n  <a class=\"btn\" (click)=\"singleData()\">渲染单个数据</a>\n  <a class=\"btn\" (click)=\"linkData()\">渲染连线数据</a>\n  <a class=\"btn\" (click)=\"throttleData()\">节流渲染 {{throttleNumber}} 个数据</a>\n  <a class=\"btn\" (click)=\"moreData()\">直接渲染 {{moreNumber}} 个数据</a>\n  <a class=\"btn\" (click)=\"getBindEvent()\">查看当前已经绑定的事件</a>\n</div>\n<div class=\"form\">\n  <div class=\"formItem\">\n    节流渲染节点个数: <input type=\"text\" name=\"throttleNumber\" [(ngModel)]=\"throttleNumber\" />\n  </div>\n  <div class=\"formItem\">\n    节流渲染节点个数: <input type=\"text\" name=\"moreNumber\" [(ngModel)]=\"moreNumber\" />\n  </div>\n</div>\n<div class=\"flow\">\n  <div class=\"left\">\n    <div *ngFor=\"let item of items\">\n      <a draggable=\"true\" class=\"item\" (dragstart)=\"onDragStart($event, item)\" (touchstart)=\"onTouchstart(item)\">{{item.label}}</a>\n    </div>\n  </div>\n  <div class=\"right\">\n    <div id=\"diagramContainer\" class=\"graphcontainer\" #graphcontainer></div>\n  </div>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/modules/example/canvas2-example/canvas2-example.component.html":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/modules/example/canvas2-example/canvas2-example.component.html ***!
+  \**********************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"toolBar\">\n  <a class=\"btn\" (click)=\"throttleData()\">节流渲染 {{throttleNumber}} 个数据</a>\n  <a class=\"btn\" (click)=\"moreData()\">直接渲染 {{moreNumber}} 个数据</a>\n  <a class=\"btn\" [ngClass]=\"{'active': isHightRender}\" (click)=\"setActive(true)\">加速模式</a>\n  <a class=\"btn\" [ngClass]=\"{'active': !isHightRender}\" (click)=\"setActive(false)\">普通模式</a>\n</div>\n<div class=\"form\">\n  <div class=\"formItem\">\n    节流渲染节点个数: <input type=\"text\" name=\"throttleNumber\" [(ngModel)]=\"throttleNumber\" />\n  </div>\n  <div class=\"formItem\">\n    直接渲染节点个数: <input type=\"text\" name=\"moreNumber\" [(ngModel)]=\"moreNumber\" />\n  </div>\n</div>\n<div class=\"flow\">\n  <div class=\"left\">\n    <div *ngFor=\"let item of items\">\n      <a draggable=\"true\" class=\"item\" (dragstart)=\"onDragStart($event, item)\">{{item.label}}</a>\n    </div>\n  </div>\n  <div class=\"right\">\n    <div id=\"diagramContainer\" class=\"graphcontainer\" #graphcontainer></div>\n  </div>\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/modules/example/element-example/element-example.component.html":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/modules/example/element-example/element-example.component.html ***!
+  \**********************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"diagramContainer\" class=\"graphcontainer\" #graphcontainer></div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/modules/example/web-gl/web-gl.component.html":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/modules/example/web-gl/web-gl.component.html ***!
+  \****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"diagramContainer\" class=\"graphcontainer\" #graphcontainer></div>");
 
 /***/ }),
 
@@ -26099,7 +26138,6 @@ class AbstractCanvas extends _base__WEBPACK_IMPORTED_MODULE_2__["Base"] {
         this.initContainer();
         this.initDom();
         this.initEvents();
-        this.initShape();
     }
     getDefaultCfg() {
         const cfg = super.getDefaultCfg();
@@ -26135,11 +26173,6 @@ class AbstractCanvas extends _base__WEBPACK_IMPORTED_MODULE_2__["Base"] {
      * 初始化绑定的事件
      */
     initEvents() { }
-    /**
-     * @protected
-     * 初始化形状
-     */
-    initShape() { }
     /**
      * 修改画布对应的 DOM 的大小
      * @param {number} width  宽度
@@ -26286,6 +26319,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shape_nodes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../shape/nodes */ "./src/app/lib/shape/nodes/index.ts");
 /* harmony import */ var _shape_point__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../shape/point */ "./src/app/lib/shape/point/index.ts");
 /* harmony import */ var _event__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../event */ "./src/app/lib/core/event/index.ts");
+/* harmony import */ var _shape_edges__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../shape/edges */ "./src/app/lib/shape/edges/index.ts");
+
 
 
 
@@ -26296,6 +26331,7 @@ class Canvas extends _abstract__WEBPACK_IMPORTED_MODULE_2__["AbstractCanvas"] {
     constructor() {
         super(...arguments);
         this.nodes = [];
+        this.edges = [];
         this.scheduledAnimationFrame = false;
         this.rendering = false;
     }
@@ -26373,20 +26409,29 @@ class Canvas extends _abstract__WEBPACK_IMPORTED_MODULE_2__["AbstractCanvas"] {
     }
     /**
      * 读取图形数据
-     * @param data NodeConfig[]
+     * @param data GraphData
      * @param isThrottle boolean 是否进行节流渲染
      */
     read(data, isThrottle) {
         this.clear();
-        if (!data || data.length === 0) {
+        console.log('data----->', data);
+        const nodes = data.nodes;
+        const edges = data.edges;
+        if (!nodes || nodes.length === 0) {
             console.warn('没有任何节点渲染');
             return false;
         }
         // 实例化节点
-        for (let i = 0; i < data.length; i++) {
-            const nodeConfig = data[i];
+        for (let i = 0; i < nodes.length; i++) {
+            const nodeConfig = nodes[i];
             const node = new _shape_nodes__WEBPACK_IMPORTED_MODULE_3__["Node"](nodeConfig);
             this.nodes.push(node);
+        }
+        // 实例化边
+        for (let i = 0; i < edges.length; i++) {
+            const edgeConfig = edges[i];
+            const edge = new _shape_edges__WEBPACK_IMPORTED_MODULE_6__["Edge"](edgeConfig, this);
+            this.edges.push(edge);
         }
         // 绘制节点
         const context = this.get('context');
@@ -26395,12 +26440,20 @@ class Canvas extends _abstract__WEBPACK_IMPORTED_MODULE_2__["AbstractCanvas"] {
             Object(_util_util__WEBPACK_IMPORTED_MODULE_1__["throttleArray"])(this.nodes, (node) => {
                 node.draw(context);
             }, 60, 10);
+            // 节流渲染
+            Object(_util_util__WEBPACK_IMPORTED_MODULE_1__["throttleArray"])(this.edges, (edge) => {
+                edge.draw(context);
+            }, 60, 10);
         }
         else {
             // 直接渲染
             for (let i = 0; i < this.nodes.length; i++) {
                 const node = this.nodes[i];
                 node.draw(context);
+            }
+            for (let i = 0; i < this.edges.length; i++) {
+                const edge = this.edges[i];
+                edge.draw(context);
             }
         }
         return true;
@@ -26431,9 +26484,14 @@ class Canvas extends _abstract__WEBPACK_IMPORTED_MODULE_2__["AbstractCanvas"] {
     // canvas绘制分层级,具有先后顺序,所以倒序才是从最顶层开始
     inNodes(pt, nodes) {
         for (let i = nodes.length - 1; i > -1; --i) {
+            const anchor = this.inNodeAnchor(pt, nodes[i]);
+            if (anchor) {
+                return anchor;
+            }
             const node = this.inNode(pt, nodes[i]);
-            if (node) {
-                return node;
+            const target = this.inNodeShape(pt, nodes[i]);
+            if (node || target) {
+                return node || target;
             }
         }
         return null;
@@ -26441,6 +26499,24 @@ class Canvas extends _abstract__WEBPACK_IMPORTED_MODULE_2__["AbstractCanvas"] {
     // 检测是否碰到该区域
     inNode(pt, node) {
         if (node.hit(pt.x, pt.y)) {
+            return node;
+        }
+        return null;
+    }
+    // 检测是否碰到该区域内的相关形状
+    inNodeShape(pt, node) {
+        const target = node.hitShape(pt.x, pt.y);
+        if (target) {
+            node.target = target;
+            return node;
+        }
+        return null;
+    }
+    // 检测是否碰到该区域内的相关形状
+    inNodeAnchor(pt, node) {
+        const anchor = node.hitAnchor(pt.x, pt.y);
+        if (anchor) {
+            node.anchorIndex = anchor.anchorIndex;
             return node;
         }
         return null;
@@ -26491,6 +26567,9 @@ class Canvas extends _abstract__WEBPACK_IMPORTED_MODULE_2__["AbstractCanvas"] {
         for (let idx = 0; idx < this.nodes.length; idx++) {
             this.nodes[idx].draw(context);
         }
+        for (let idx = 0; idx < this.edges.length; idx++) {
+            this.edges[idx].draw(context);
+        }
         this.rendering = false;
     }
     clearCanvas() {
@@ -26507,12 +26586,12 @@ class Canvas extends _abstract__WEBPACK_IMPORTED_MODULE_2__["AbstractCanvas"] {
         super.clear();
         this.clearCanvas();
         this.nodes = [];
+        this.edges = [];
     }
     destroy() {
         super.destroy();
         this.clear();
         this.destroyEvent();
-        this.nodes = [];
     }
 }
 
@@ -26933,33 +27012,56 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class BBox {
-    constructor(x, y, width, height) {
+    constructor(cfg) {
         this.center = new _point__WEBPACK_IMPORTED_MODULE_1__["Point"](0, 0);
-        this.init(x, y, width, height);
+        this.init(cfg);
     }
-    init(x, y, width, height) {
-        this.width = width < 0 ? 0 : width;
-        this.height = height < 0 ? 0 : height;
-        this.x = x;
-        this.y = y;
-        this.minX = x;
-        this.minY = y;
+    init(cfg) {
+        this.width = cfg.width < 0 ? 0 : cfg.width;
+        this.height = cfg.height < 0 ? 0 : cfg.height;
+        this.x = cfg.x << 0;
+        this.y = cfg.y << 0;
+        this.minX = this.x;
+        this.minY = this.y;
         this.maxX = this.x + this.width;
         this.maxY = this.y + this.height;
+        this.name = cfg.name || this.name || '';
+        this.zIndex = cfg.zIndex;
+        this.anchorIndex = cfg.anchorIndex;
         this.calceCenter();
     }
     clone() {
-        return new BBox(this.x, this.y, this.width, this.height);
+        const config = {
+            x: this.x,
+            y: this.y,
+            width: this.width,
+            height: this.height,
+        };
+        return new BBox(config);
     }
     update(model) {
-        this.init(model.x, model.y, model.width, model.height);
+        const cfg = {
+            x: model.x,
+            y: model.y,
+            width: model.width,
+            height: model.height,
+        };
+        this.width = cfg.width < 0 ? 0 : cfg.width;
+        this.height = cfg.height < 0 ? 0 : cfg.height;
+        this.x = cfg.x << 0;
+        this.y = cfg.y << 0;
+        this.minX = this.x;
+        this.minY = this.y;
+        this.maxX = this.x + this.width;
+        this.maxY = this.y + this.height;
+        this.calceCenter();
     }
     calceCenter() {
         this.center.x = this.x + this.width / 2;
         this.center.y = this.y + this.height / 2;
     }
-    hit(pt, padding = 0) {
-        return pt.x > this.x - padding && pt.x < this.maxX + padding && pt.y > this.y - padding && pt.y < this.maxY + padding;
+    hit(x, y, padding = 0) {
+        return x > this.minX - padding && x < this.maxX + padding && y > this.minY - padding && y < this.maxY + padding;
     }
     hitBBox(bbox) {
         return ((bbox.x > this.x && bbox.x < this.maxX && bbox.y > this.y && bbox.y < this.maxY) ||
@@ -27005,6 +27107,246 @@ class BBox {
         this.calceCenter();
     }
 }
+
+
+/***/ }),
+
+/***/ "./src/app/lib/shape/edges/index.ts":
+/*!******************************************!*\
+  !*** ./src/app/lib/shape/edges/index.ts ***!
+  \******************************************/
+/*! exports provided: Edge */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Edge", function() { return Edge; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../item */ "./src/app/lib/shape/item/index.ts");
+/* harmony import */ var _service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service */ "./src/app/lib/service/index.ts");
+/* harmony import */ var _shape__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./shape */ "./src/app/lib/shape/edges/shape/index.ts");
+
+
+
+
+// 默认形状
+const DEFAULT_SHAPE = 'line';
+class Edge extends _item__WEBPACK_IMPORTED_MODULE_1__["Item"] {
+    constructor(cfg, canvas) {
+        super(cfg);
+        this.type = 'edge';
+        this.canvas = canvas;
+        // 初始化配置
+        this.initConfig(cfg);
+    }
+    initConfig(model) {
+        // 如果用户没有设定id，就在这里构建一个id
+        this.id = model.id || _service__WEBPACK_IMPORTED_MODULE_2__["GService"].getNodeId();
+        model.id = this.id;
+        // 初始化节点的形状
+        this.shapeName = model.shapeName || DEFAULT_SHAPE;
+        model.shapeName = this.shapeName;
+        this.model = model;
+        this.source = model.source;
+        this.target = model.target;
+        this.sourceAnchorIndex = model.sourceAnchorIndex;
+        this.targetAnchorIndex = model.targetAnchorIndex;
+        model.sourceNode = this.getSourceNode();
+        model.targetNode = this.getTargetNode();
+    }
+    update(model) {
+        this.model = Object.assign({}, this.model, model);
+    }
+    draw(ctx) {
+        // 更新盒子大小
+        this.getAttr();
+        this.updateAnchorPoistion();
+        // 绘制
+        const shape = _service__WEBPACK_IMPORTED_MODULE_2__["GService"].getShape(this.shapeName);
+        shape.options = this.getShapeModelOption();
+        shape.draw(ctx, this);
+    }
+    getAttr() {
+        super.getAttr();
+        return this.attr;
+    }
+    getSourceNode() {
+        if (!this.source) {
+            return null;
+        }
+        const nodes = this.canvas.nodes || [];
+        for (let idx = 0; idx < nodes.length; idx++) {
+            if (nodes[idx].id === this.source) {
+                return nodes[idx];
+            }
+        }
+    }
+    getTargetNode() {
+        if (!this.target) {
+            return null;
+        }
+        const nodes = this.canvas.nodes || [];
+        for (let idx = 0; idx < nodes.length; idx++) {
+            if (nodes[idx].id === this.target) {
+                return nodes[idx];
+            }
+        }
+    }
+    getSource() {
+        return this.model.sourceNode;
+    }
+    getTarget() {
+        return this.model.targetNode;
+    }
+    updateAnchorPoistion() {
+        const source = this.getSource();
+        const target = this.getTarget();
+        const sourceAnchorPoint = source.cacluteAnchorPosition(false, this.sourceAnchorIndex);
+        const targetAnchorPoint = target ? target.cacluteAnchorPosition(false, this.targetAnchorIndex) : null;
+        this.model.sourcePoint = sourceAnchorPoint;
+        this.model.targetPoint = targetAnchorPoint;
+    }
+    getEdgeBBox() {
+        const model = this.model;
+        const source = model.sourcePoint;
+        const target = model.targetPoint;
+        return {
+            source: {
+                x: source.x || 0,
+                y: source.y || 0,
+                anchorIndex: source.anchorIndex || 0,
+            },
+            target: {
+                x: target.x || 0,
+                y: target.y || 50,
+                anchorIndex: target.anchorIndex || 0,
+            },
+        };
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib/shape/edges/shape/base.ts":
+/*!***********************************************!*\
+  !*** ./src/app/lib/shape/edges/shape/base.ts ***!
+  \***********************************************/
+/*! exports provided: baseShape */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseShape", function() { return baseShape; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var src_app_lib_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/lib/util */ "./src/app/lib/util/index.ts");
+
+
+const baseShape = {
+    getDefaultOptions() {
+        return {
+            style: {
+                strokeStyle: '#222',
+            },
+            labelStyle: {
+                color: '#f00',
+                fontFamily: '"Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial',
+                fontSize: 12,
+                lineHeight: 1.5,
+                fontStyle: 'normal',
+                fontWeight: 'normal',
+                textAlign: 'center',
+                textBaseline: 'middle',
+                background: ''
+            }
+        };
+    },
+    getOptions() {
+        const defaultOptions = this.getDefaultOptions();
+        return Object(src_app_lib_util__WEBPACK_IMPORTED_MODULE_1__["merge"])(defaultOptions, this.options);
+    },
+    getBBox(edge) {
+        return edge.getEdgeBBox();
+    },
+    draw(ctx, node) {
+        // 绘制包裹区域
+        this.drawContainer(ctx, node);
+        // 绘制文字
+        // this.drawText(ctx, node);
+    },
+    drawContainer(ctx, node) {
+        const { style } = this.getOptions();
+        const { source, target } = this.getBBox(node);
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(source.x, source.y);
+        ctx.lineTo(target.x, target.y);
+        node.setAttr(ctx, style || {});
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+    },
+    drawText(ctx, node) {
+        const label = node.model.label;
+        const bbox = this.getBBox(node);
+        const { labelStyle } = this.getOptions();
+        ctx.save();
+        ctx.beginPath();
+        node.setAttr(ctx, labelStyle || {});
+        ctx.font = `${labelStyle.fontStyle || 'normal'} normal ${labelStyle.fontWeight || 'normal'} ${labelStyle.fontSize}px/${labelStyle.lineHeight} ${labelStyle.fontFamily}`;
+        if (labelStyle.color) {
+            ctx.fillStyle = labelStyle.color;
+        }
+        else {
+            ctx.fillStyle = '#222';
+        }
+        ctx.fillText(label, bbox.center.x, bbox.center.y);
+        ctx.restore();
+    }
+};
+
+
+/***/ }),
+
+/***/ "./src/app/lib/shape/edges/shape/index.ts":
+/*!************************************************!*\
+  !*** ./src/app/lib/shape/edges/shape/index.ts ***!
+  \************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _shape__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../shape */ "./src/app/lib/shape/index.ts");
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./base */ "./src/app/lib/shape/edges/shape/base.ts");
+/* harmony import */ var _line__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./line */ "./src/app/lib/shape/edges/shape/line.ts");
+// 注册自定义节点
+
+
+
+
+// 所有图形的起点
+_shape__WEBPACK_IMPORTED_MODULE_1__["Shape"].registeEdge('base-edge', _base__WEBPACK_IMPORTED_MODULE_2__["baseShape"]);
+// 真正的图形
+_shape__WEBPACK_IMPORTED_MODULE_1__["Shape"].registeEdge('line', _line__WEBPACK_IMPORTED_MODULE_3__["lineShape"], 'base-edge');
+
+
+/***/ }),
+
+/***/ "./src/app/lib/shape/edges/shape/line.ts":
+/*!***********************************************!*\
+  !*** ./src/app/lib/shape/edges/shape/line.ts ***!
+  \***********************************************/
+/*! exports provided: lineShape */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lineShape", function() { return lineShape; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+const lineShape = {};
 
 
 /***/ }),
@@ -27060,13 +27402,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const DefaultAnchorStyle = {
+    fillStyle: '#fff',
+    strokeStyle: '#f00',
+};
 class Item extends _core_abstract__WEBPACK_IMPORTED_MODULE_1__["AbstractItem"] {
     constructor(cfg) {
         super(cfg);
         this.rotate = 0;
         this.offsetRotate = 0;
-        this.bbox = new _bbox__WEBPACK_IMPORTED_MODULE_2__["BBox"](0, 0, 0, 0);
+        this.bbox = new _bbox__WEBPACK_IMPORTED_MODULE_2__["BBox"]({ x: 0, y: 0, width: 0, height: 0 });
         this.attr = {};
+        this.shapes = [];
         /**
          * 类型
          * @type {string}
@@ -27091,12 +27438,27 @@ class Item extends _core_abstract__WEBPACK_IMPORTED_MODULE_1__["AbstractItem"] {
         }
         return false;
     }
+    hitShape(x, y, padding) {
+        const shapes = this.shapes || [];
+        if (shapes && shapes.length === 0) {
+            return undefined;
+        }
+        for (let idx = 0; idx < shapes.length; idx++) {
+            const bbox = shapes[idx];
+            if (bbox.hit(x, y, padding)) {
+                return bbox;
+            }
+        }
+    }
     getAttr() {
         this.attr.x = this.model.x || 0;
         this.attr.y = this.model.y || 0;
         this.attr.style = this.model.style || {};
         this.attr.labelStyle = this.model.labelStyle || {};
         return this.attr;
+    }
+    getBBox() {
+        return this.bbox;
     }
     setAttr(ctx, attr) {
         Object(_util_draw__WEBPACK_IMPORTED_MODULE_3__["applyAttrsToContext"])(ctx, attr);
@@ -27106,11 +27468,20 @@ class Item extends _core_abstract__WEBPACK_IMPORTED_MODULE_1__["AbstractItem"] {
     }
     getShapeModelOption() {
         const shapeModelOption = {
-            style: this.model.style,
-            labelStyle: this.model.labelStyle,
+            style: this.model.style || {},
+            labelStyle: this.model.labelStyle || {},
+            anchorStyle: this.model.anchorStyle || DefaultAnchorStyle,
         };
         this.getAttr();
         return shapeModelOption;
+    }
+    addShape(bbox) {
+        // 添加子元素
+        this.shapes.push(bbox);
+    }
+    generateBBox(config) {
+        const bbox = new _bbox__WEBPACK_IMPORTED_MODULE_2__["BBox"](config);
+        return bbox;
     }
 }
 
@@ -27141,6 +27512,8 @@ class Node extends _item__WEBPACK_IMPORTED_MODULE_1__["Item"] {
     constructor(cfg) {
         super(cfg);
         this.type = 'node';
+        this.anchors = [];
+        this.anchorShapes = [];
         // 初始化配置
         this.initConfig(cfg);
     }
@@ -27152,6 +27525,7 @@ class Node extends _item__WEBPACK_IMPORTED_MODULE_1__["Item"] {
         this.shapeName = model.shapeName || DEFAULT_SHAPE;
         model.shapeName = this.shapeName;
         this.model = model;
+        this.anchors = this.getAuthorPoint();
     }
     update(model) {
         this.model = Object.assign({}, this.model, model);
@@ -27164,12 +27538,97 @@ class Node extends _item__WEBPACK_IMPORTED_MODULE_1__["Item"] {
         const shape = _service__WEBPACK_IMPORTED_MODULE_2__["GService"].getShape(this.shapeName);
         shape.options = this.getShapeModelOption();
         shape.draw(ctx, this);
+        // 绘制锚点
+        this.drawAnchor(ctx);
     }
     getAttr() {
         super.getAttr();
         this.attr.width = this.model.width || 100;
         this.attr.height = this.model.height || 60;
         return this.attr;
+    }
+    getAuthorPoint() {
+        const model = this.model;
+        const anchor = model.anchor;
+        const defaultAnthor = this.cacluteAnchorPosition(true);
+        if (typeof anchor === 'boolean' && anchor) {
+            return defaultAnthor || [];
+        }
+        return anchor || [];
+    }
+    cacluteAnchorPosition(all, anchorIndex) {
+        const bbox = this.bbox;
+        const leftCenter = {
+            x: bbox.minX,
+            y: (bbox.minY + bbox.maxY) / 2,
+            anchorIndex: 0,
+        };
+        const topCenter = {
+            x: (bbox.minX + bbox.maxX) / 2,
+            y: bbox.minY,
+            anchorIndex: 1,
+        };
+        const rightCenter = {
+            x: bbox.maxX,
+            y: (bbox.minY + bbox.maxY) / 2,
+            anchorIndex: 2,
+        };
+        const bottomCenter = {
+            x: (bbox.minX + bbox.maxX) / 2,
+            y: bbox.maxY,
+            anchorIndex: 3,
+        };
+        const output = [leftCenter, topCenter, rightCenter, bottomCenter];
+        if (all) {
+            return output;
+        }
+        return output[anchorIndex];
+    }
+    hitAnchor(x, y, padding) {
+        const shapes = this.anchorShapes || [];
+        if (shapes && shapes.length === 0) {
+            return undefined;
+        }
+        for (let idx = 0; idx < shapes.length; idx++) {
+            const bbox = shapes[idx];
+            if (bbox.hit(x, y, padding)) {
+                return bbox;
+            }
+        }
+    }
+    drawAnchor(ctx) {
+        const { anchorStyle } = this.getShapeModelOption();
+        const anchorPoint = this.getAuthorPoint();
+        // 锚点半径
+        const radius = anchorStyle.radius || 5;
+        this.anchorShapes = [];
+        if (anchorPoint && anchorPoint.length > 0) {
+            for (let index = 0; index < anchorPoint.length; index++) {
+                const anchor = anchorPoint[index];
+                ctx.save();
+                ctx.beginPath();
+                ctx.translate(anchor.x, anchor.y);
+                ctx.arc(0, 0, radius, 0, Math.PI * 2, false);
+                this.setAttr(ctx, anchorStyle || {});
+                ctx.fill();
+                ctx.stroke();
+                ctx.restore();
+                this.addAnchor(anchor, radius, 10);
+            }
+        }
+    }
+    addAnchor(anchor, radius, zIndex) {
+        const config = {
+            x: anchor.x - radius,
+            y: anchor.y - radius,
+            width: 2 * radius,
+            height: 2 * radius,
+            name: `anchor-${anchor.anchorIndex}`,
+            zIndex: zIndex || 10,
+            anchorIndex: anchor.anchorIndex,
+        };
+        const bbox = this.generateBBox(config);
+        this.anchorShapes.push(bbox);
     }
 }
 
@@ -27207,7 +27666,7 @@ const baseShape = {
                 textAlign: 'center',
                 textBaseline: 'middle',
                 background: ''
-            }
+            },
         };
     },
     getOptions() {
@@ -27250,7 +27709,7 @@ const baseShape = {
         }
         ctx.fillText(label, bbox.center.x, bbox.center.y);
         ctx.restore();
-    }
+    },
 };
 
 
@@ -27717,6 +28176,2447 @@ function throttleArrayFunc(arr, cb, count, interval) {
 
 /***/ }),
 
+/***/ "./src/app/lib2/core/abstract/base.ts":
+/*!********************************************!*\
+  !*** ./src/app/lib2/core/abstract/base.ts ***!
+  \********************************************/
+/*! exports provided: Base */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Base", function() { return Base; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../emitter */ "./src/app/lib2/core/emitter/index.ts");
+/* harmony import */ var _util_mix__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/mix */ "./src/app/lib2/util/mix.ts");
+
+
+
+class Base extends _emitter__WEBPACK_IMPORTED_MODULE_1__["default"] {
+    constructor(cfg) {
+        super();
+        this.destroyed = false;
+        const defaultCfg = this.getDefaultCfg();
+        this.cfg = Object(_util_mix__WEBPACK_IMPORTED_MODULE_2__["default"])(defaultCfg, cfg);
+    }
+    getDefaultCfg() {
+        return {};
+    }
+    get(key) {
+        return this.cfg[key];
+    }
+    set(key, value) {
+        this.cfg[key] = value;
+    }
+    destroy() {
+        this.cfg = {
+            destroyed: true,
+        };
+        this.off();
+        this.destroyed = true;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib2/core/abstract/element.ts":
+/*!***********************************************!*\
+  !*** ./src/app/lib2/core/abstract/element.ts ***!
+  \***********************************************/
+/*! exports provided: AbstractElement */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AbstractElement", function() { return AbstractElement; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./base */ "./src/app/lib2/core/abstract/base.ts");
+
+
+class AbstractElement extends _base__WEBPACK_IMPORTED_MODULE_1__["Base"] {
+    draw() {
+        // TODO...
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib2/core/abstract/index.ts":
+/*!*********************************************!*\
+  !*** ./src/app/lib2/core/abstract/index.ts ***!
+  \*********************************************/
+/*! exports provided: AbstractElement */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./element */ "./src/app/lib2/core/abstract/element.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AbstractElement", function() { return _element__WEBPACK_IMPORTED_MODULE_1__["AbstractElement"]; });
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/lib2/core/element/index.ts":
+/*!********************************************!*\
+  !*** ./src/app/lib2/core/element/index.ts ***!
+  \********************************************/
+/*! exports provided: Element */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Element", function() { return Element; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _abstract__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../abstract */ "./src/app/lib2/core/abstract/index.ts");
+
+
+class Element extends _abstract__WEBPACK_IMPORTED_MODULE_1__["AbstractElement"] {
+    constructor(cfg) {
+        super(cfg);
+        this.init();
+    }
+    getDefaultCfg() {
+        return {
+            width: 500,
+            height: 500,
+        };
+    }
+    init() {
+        this.initContainer();
+    }
+    /** 初始化容器 */
+    initContainer() {
+        const width = this.get('width');
+        const height = this.get('height');
+        this.setDomSize(width, height);
+        this.resetContainerStyle();
+    }
+    /** 修改容器尺寸 */
+    setDomSize(width, height) {
+        const container = this.get('container');
+        const widthStr = typeof width === 'number' ? `${width}px` : width;
+        const heightStr = typeof height === 'number' ? `${height}px` : height;
+        container.style.width = widthStr;
+        container.style.height = heightStr;
+    }
+    /** 修改容器基础样式 */
+    resetContainerStyle() {
+        const container = this.get('container');
+        container.style.position = 'relative';
+        container.style.overflow = 'hidden';
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib2/core/emitter/index.ts":
+/*!********************************************!*\
+  !*** ./src/app/lib2/core/emitter/index.ts ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return EventEmitter; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class EventEmitter {
+    constructor() {
+        this._events = {};
+    }
+    /**
+     * 监听一个事件
+     * @param event 事件名
+     * @param callback 回调函数
+     * @param once 只执行一次
+     */
+    on(event, callback) {
+        if (!this._events[event]) {
+            this._events[event] = [];
+        }
+        this._events[event].push({
+            callback,
+        });
+        return this;
+    }
+    /**
+     * 触发一个事件
+     * @param event 事件名
+     * @param args 回调事件
+     */
+    emit(event, ...args) {
+        const events = this._events[event] || [];
+        const doEmit = (es) => {
+            const length = es.length;
+            for (let i = 0; i < length; i++) {
+                if (!es[i]) {
+                    continue;
+                }
+                const { callback } = es[i];
+                callback.apply(this, args);
+            }
+        };
+        doEmit(events);
+    }
+    /**
+     * 取消监听一个事件，或者一个channel
+     * @param event 事件名
+     * @param callback 回调函数
+     */
+    off(event, callback) {
+        if (!event) {
+            this._events = {};
+        }
+        else {
+            // 如果没有指定删除的回调方法，就清空该事件中所有回调函数
+            if (!callback) {
+                delete this._events[event];
+            }
+            else {
+                const events = this._events[event] || [];
+                let length = events.length;
+                for (let i = 0; i < length; i++) {
+                    if (events[i].callback === callback) {
+                        events.splice(i, 1);
+                        length--;
+                        i--;
+                    }
+                }
+                if (events.length === 0) {
+                    delete this._events[event];
+                }
+            }
+        }
+        return this;
+    }
+    getEvents() {
+        return this._events;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib2/graph/index.ts":
+/*!*************************************!*\
+  !*** ./src/app/lib2/graph/index.ts ***!
+  \*************************************/
+/*! exports provided: Graph */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Graph", function() { return Graph; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _core_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/element */ "./src/app/lib2/core/element/index.ts");
+/* harmony import */ var _core_emitter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/emitter */ "./src/app/lib2/core/emitter/index.ts");
+/* harmony import */ var _util_mix__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/mix */ "./src/app/lib2/util/mix.ts");
+/* harmony import */ var _item_node__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../item/node */ "./src/app/lib2/item/node.ts");
+
+
+
+
+
+class Graph extends _core_emitter__WEBPACK_IMPORTED_MODULE_2__["default"] {
+    constructor(cfg) {
+        super();
+        this.nodes = [];
+        this.appendElement = (element) => {
+            this.container.appendChild(element);
+        };
+        const defaultCfg = this.getDefaultCfg();
+        this.cfg = Object(_util_mix__WEBPACK_IMPORTED_MODULE_3__["default"])(defaultCfg, cfg);
+        this.init();
+    }
+    getDefaultCfg() {
+        return {};
+    }
+    init() {
+        const container = this.get('container');
+        this.container = container;
+        this.initElement();
+    }
+    initElement() {
+        const width = this.get('width');
+        const height = this.get('height');
+        this.element = new _core_element__WEBPACK_IMPORTED_MODULE_1__["Element"]({
+            container: this.container,
+            width,
+            height,
+        });
+    }
+    render() {
+        console.log('绘制元素');
+    }
+    addItem(cfg) {
+        const container = this.get('container');
+        cfg.graph = this;
+        const node = new _item_node__WEBPACK_IMPORTED_MODULE_4__["Node"](cfg);
+    }
+    get(key) {
+        return this.cfg[key];
+    }
+    set(key, value) {
+        this.cfg[key] = value;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib2/item/item.ts":
+/*!***********************************!*\
+  !*** ./src/app/lib2/item/item.ts ***!
+  \***********************************/
+/*! exports provided: ItemBase */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ItemBase", function() { return ItemBase; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class ItemBase {
+    constructor(cfg) {
+        this.cfg = Object.assign(this.getDefaultCfg(), cfg);
+        if (cfg.graph) {
+            this.graph = cfg.graph;
+        }
+        this.init();
+        this.draw();
+    }
+    getDefaultCfg() {
+        return {};
+    }
+    init() {
+        const container = this.initContainer();
+        const canvas = this.initCanvas();
+        container.appendChild(canvas);
+        this.bbox = this.getBBox();
+    }
+    initContainer() {
+        const container = document.createElement('div');
+        container.style.position = 'absolute';
+        container.style.left = '0';
+        container.style.top = '0';
+        container.style.outline = 'none';
+        container.style.border = '1px solid #222';
+        this.container = container;
+        this.set('container', container);
+        return container;
+    }
+    initCanvas() {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        this.canvas = canvas;
+        this.set('context', context);
+        return canvas;
+    }
+    /** 修改dom元素的大小 */
+    setDOMSize(width, height) {
+        this.setCanvasDomSize(width, height);
+        this.setContainerDomSize(width, height);
+    }
+    /** 修改容器尺寸和位置 */
+    setContainerDomSize(width, height) {
+        this.container.style.width = `${width}px`;
+        this.container.style.height = `${height}px`;
+    }
+    /** 修改画布尺寸 */
+    setCanvasDomSize(width, height) {
+        const context = this.get('context');
+        const canvas = this.canvas;
+        const pixelRatio = this.getPixelRatio();
+        canvas.width = pixelRatio * width;
+        canvas.height = pixelRatio * height;
+        // 设置 canvas 元素的宽度和高度，会重置缩放，因此 context.scale 需要在每次设置宽、高后调用
+        if (pixelRatio > 1) {
+            context.scale(pixelRatio, pixelRatio);
+        }
+    }
+    /** 修改位置 */
+    setPosition() {
+        this.setContainerPosition();
+        this.setCanvasPosition();
+    }
+    /** 修改容器位置 */
+    setContainerPosition() {
+        const bbox = this.bbox;
+        this.container.style.left = `${bbox.minX}px`;
+        this.container.style.top = `${bbox.minY}px`;
+        this.container.style.right = `${bbox.maxX}px`;
+        this.container.style.bottom = `${bbox.maxY}px`;
+        this.container.style.width = `${bbox.width}px`;
+        this.container.style.height = `${bbox.height}px`;
+    }
+    /** 修改画布位置 */
+    setCanvasPosition() {
+        const bbox = this.bbox;
+        this.canvas.style.left = `${bbox.minX}px`;
+        this.canvas.style.top = `${bbox.minY}px`;
+        this.canvas.style.right = `${bbox.maxX}px`;
+        this.canvas.style.bottom = `${bbox.maxY}px`;
+        this.canvas.width = bbox.width;
+        this.canvas.height = bbox.height;
+    }
+    /**
+     * 获取屏幕像素比
+     */
+    getPixelRatio() {
+        const pixelRatio = this.get('pixelRatio') || (window.devicePixelRatio || 1);
+        // 不足 1 的取 1，超出 1 的取整
+        return pixelRatio >= 1 ? Math.floor(pixelRatio) : 1;
+    }
+    draw() { }
+    get(key) {
+        return this.cfg[key];
+    }
+    set(key, value) {
+        this.cfg[key] = value;
+    }
+    getBBox() {
+        const x = this.get('x') || 0;
+        const y = this.get('y') || 0;
+        const width = this.get('width');
+        const height = this.get('height');
+        const bbox = {
+            x: x >> 0,
+            y: y >> 0,
+            width: width >> 0,
+            height: height >> 0,
+            minX: x,
+            minY: y,
+            maxX: x + width,
+            maxY: y + height,
+        };
+        return bbox;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib2/item/node.ts":
+/*!***********************************!*\
+  !*** ./src/app/lib2/item/node.ts ***!
+  \***********************************/
+/*! exports provided: Node */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Node", function() { return Node; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./item */ "./src/app/lib2/item/item.ts");
+
+
+class Node extends _item__WEBPACK_IMPORTED_MODULE_1__["ItemBase"] {
+    constructor(cfg) {
+        super(cfg);
+        this.type = 'node';
+    }
+    draw() {
+        this.setPosition();
+        this.graph.appendElement(this.container);
+    }
+    getType() {
+        return this.type;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib2/util/mix.ts":
+/*!**********************************!*\
+  !*** ./src/app/lib2/util/mix.ts ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+function _mix(source, object) {
+    for (const key in object) {
+        if (object.hasOwnProperty(key) && key !== 'constructor' && object[key] !== undefined) {
+            source[key] = object[key];
+        }
+    }
+}
+function mix(dist, src1, src2, src3) {
+    if (src1) {
+        _mix(dist, src1);
+    }
+    if (src2) {
+        _mix(dist, src2);
+    }
+    if (src3) {
+        _mix(dist, src3);
+    }
+    return dist;
+}
+/* harmony default export */ __webpack_exports__["default"] = (mix);
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/core/abstract/base.ts":
+/*!********************************************!*\
+  !*** ./src/app/lib3/core/abstract/base.ts ***!
+  \********************************************/
+/*! exports provided: Base */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Base", function() { return Base; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../emitter */ "./src/app/lib3/core/emitter/index.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils */ "./src/app/lib3/utils/index.ts");
+
+
+
+class Base extends _emitter__WEBPACK_IMPORTED_MODULE_1__["default"] {
+    constructor(option) {
+        super();
+        const defaultOption = this.getDefaultOption();
+        this.option = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["mix"])(defaultOption, option);
+    }
+    getDefaultOption() {
+        return {};
+    }
+    get(key) {
+        return this.option[key];
+    }
+    set(key, value) {
+        this.option[key] = value;
+    }
+    destroy() {
+        this.option = {
+            destroyed: true,
+        };
+        this.off();
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/core/abstract/canvas.ts":
+/*!**********************************************!*\
+  !*** ./src/app/lib3/core/abstract/canvas.ts ***!
+  \**********************************************/
+/*! exports provided: AbstractCanvas */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AbstractCanvas", function() { return AbstractCanvas; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./src/app/lib3/utils/index.ts");
+
+
+const PX_SUFFIX = 'px';
+class AbstractCanvas {
+    constructor(option) {
+        this.init(option);
+    }
+    init(option) {
+        this.option = Object.assign({}, option);
+        this.initCanvas();
+    }
+    initCanvas() {
+        this.canvasElement = this.createCanvas();
+        this.ctx = this.getCanvasContext();
+        // 附加到容器
+        const container = this.get('container');
+        container.appendChild(this.canvasElement);
+        // 设置初始宽度
+        this.setCanvasSize(this.get('width'), this.get('height'));
+    }
+    /**
+     * 修改画布对应的 DOM 的大小
+     * @param {number} width  宽度
+     * @param {number} height 高度
+     */
+    setCanvasSize(width, height) {
+        const el = this.canvasElement;
+        if (_utils__WEBPACK_IMPORTED_MODULE_1__["isBrowser"]) {
+            el.style.width = width + PX_SUFFIX;
+            el.style.height = height + PX_SUFFIX;
+        }
+    }
+    getCanvasContext() {
+        const context = this.canvasElement.getContext('2d');
+        return context;
+    }
+    getContext() {
+        return this.ctx;
+    }
+    getCanvasElement() {
+        return this.canvasElement;
+    }
+    get(key) {
+        return this.option[key];
+    }
+    set(key, value) {
+        this.option[key] = value;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/core/abstract/container.ts":
+/*!*************************************************!*\
+  !*** ./src/app/lib3/core/abstract/container.ts ***!
+  \*************************************************/
+/*! exports provided: AbstractContainer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AbstractContainer", function() { return AbstractContainer; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./base */ "./src/app/lib3/core/abstract/base.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils */ "./src/app/lib3/utils/index.ts");
+
+
+
+class AbstractContainer extends _base__WEBPACK_IMPORTED_MODULE_1__["Base"] {
+    constructor(option) {
+        super(option);
+        this.initContainer();
+    }
+    initContainer() {
+        let container = this.get('container');
+        if (Object(_utils__WEBPACK_IMPORTED_MODULE_2__["isString"])(container)) {
+            container = document.getElementById(container);
+            this.set('container', container);
+        }
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/core/abstract/item.ts":
+/*!********************************************!*\
+  !*** ./src/app/lib3/core/abstract/item.ts ***!
+  \********************************************/
+/*! exports provided: AbstractItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AbstractItem", function() { return AbstractItem; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./src/app/lib3/utils/index.ts");
+
+
+class AbstractItem {
+    constructor(option) {
+        const defaultOption = this.getDefaultOption();
+        this.option = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["mix"])(defaultOption, option);
+    }
+    getDefaultOption() {
+        return {};
+    }
+    hit(x, y, padding) {
+        return false;
+    }
+    get(key) {
+        return this.option[key];
+    }
+    set(key, value) {
+        this.option[key] = value;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/core/canvas/index.ts":
+/*!*******************************************!*\
+  !*** ./src/app/lib3/core/canvas/index.ts ***!
+  \*******************************************/
+/*! exports provided: Canvas */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Canvas", function() { return Canvas; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _abstract_canvas__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../abstract/canvas */ "./src/app/lib3/core/abstract/canvas.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils */ "./src/app/lib3/utils/index.ts");
+
+
+
+class Canvas extends _abstract_canvas__WEBPACK_IMPORTED_MODULE_1__["AbstractCanvas"] {
+    createCanvas() {
+        const element = document.createElement('canvas');
+        element.style.position = 'absolute';
+        element.style.left = '0';
+        element.style.top = '0';
+        element.style.outline = 'none';
+        return element;
+    }
+    clearCanvas() {
+        const context = this.ctx;
+        const element = this.canvasElement;
+        context.clearRect(0, 0, element.width, element.height);
+    }
+    setCanvasSize(width, height) {
+        super.setCanvasSize(width, height);
+        // 实现高清绘制
+        const ctx = this.ctx;
+        const el = this.canvasElement;
+        const pixelRatio = this.getPixelRatio();
+        el.width = pixelRatio * width;
+        el.height = pixelRatio * height;
+        // 设置 canvas 元素的宽度和高度，会重置缩放，因此 context.scale 需要在每次设置宽、高后调用
+        if (pixelRatio > 1) {
+            ctx.scale(pixelRatio, pixelRatio);
+        }
+    }
+    /**
+     * 获取屏幕像素比
+     */
+    getPixelRatio() {
+        const pixelRatio = this.get('pixelRatio') || Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getPixelRatio"])();
+        // 不足 1 的取 1，超出 1 的取整
+        return pixelRatio >= 1 ? Math.floor(pixelRatio) : 1;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/core/container/index.ts":
+/*!**********************************************!*\
+  !*** ./src/app/lib3/core/container/index.ts ***!
+  \**********************************************/
+/*! exports provided: Container */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Container", function() { return Container; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _abstract_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../abstract/container */ "./src/app/lib3/core/abstract/container.ts");
+
+
+class Container extends _abstract_container__WEBPACK_IMPORTED_MODULE_1__["AbstractContainer"] {
+    constructor(option) {
+        super(option);
+    }
+    initContainer() {
+        const size = this.getSize();
+        super.initContainer();
+    }
+    getSize() {
+        const width = this.get('width') || 500;
+        const height = this.get('height') || 500;
+        return { width, height };
+    }
+    createDivElement() {
+        const divElement = document.createElement('div');
+        divElement.style.position = 'absolute';
+        divElement.style.top = '0';
+        divElement.style.right = '0';
+        divElement.style.bottom = '0';
+        divElement.style.left = '0';
+        divElement.style.zIndex = '1';
+        divElement.style.background = 'transparent';
+        return divElement;
+    }
+    appendElement(element) {
+        const container = this.get('container');
+        container.append(element);
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/core/emitter/index.ts":
+/*!********************************************!*\
+  !*** ./src/app/lib3/core/emitter/index.ts ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return EventEmitter; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class EventEmitter {
+    constructor() {
+        this._events = {};
+    }
+    /**
+     * 监听一个事件
+     * @param event 事件名
+     * @param callback 回调函数
+     * @param once 只执行一次
+     */
+    on(event, callback) {
+        if (!this._events[event]) {
+            this._events[event] = [];
+        }
+        this._events[event].push({
+            callback,
+        });
+        return this;
+    }
+    /**
+     * 触发一个事件
+     * @param event 事件名
+     * @param args 回调事件
+     */
+    emit(event, ...args) {
+        const events = this._events[event] || [];
+        const doEmit = (es) => {
+            const length = es.length;
+            for (let i = 0; i < length; i++) {
+                if (!es[i]) {
+                    continue;
+                }
+                const { callback } = es[i];
+                callback.apply(this, args);
+            }
+        };
+        doEmit(events);
+    }
+    /**
+     * 取消监听一个事件，或者一个channel
+     * @param event 事件名
+     * @param callback 回调函数
+     */
+    off(event, callback) {
+        if (!event) {
+            this._events = {};
+        }
+        else {
+            // 如果没有指定删除的回调方法，就清空该事件中所有回调函数
+            if (!callback) {
+                delete this._events[event];
+            }
+            else {
+                const events = this._events[event] || [];
+                let length = events.length;
+                for (let i = 0; i < length; i++) {
+                    if (events[i].callback === callback) {
+                        events.splice(i, 1);
+                        length--;
+                        i--;
+                    }
+                }
+                if (events.length === 0) {
+                    delete this._events[event];
+                }
+            }
+        }
+        return this;
+    }
+    getEvents() {
+        return this._events;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/core/event/contoller.ts":
+/*!**********************************************!*\
+  !*** ./src/app/lib3/core/event/contoller.ts ***!
+  \**********************************************/
+/*! exports provided: EventController */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventController", function() { return EventController; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+// 监听的事件
+const EVENTS = [
+    'click',
+    'mousedown',
+    'mouseup',
+    'dblclick',
+    'mouseout',
+    'mouseover',
+    'mousemove',
+    'mouseleave',
+    'mouseenter',
+    'touchstart',
+    'touchmove',
+    'touchend',
+    'dragenter',
+    'dragover',
+    'dragleave',
+    'drop',
+    'contextmenu',
+    'mousewheel',
+];
+class EventController {
+    constructor(option) {
+        this.eventCallback = (event) => {
+            const type = event.type;
+            this.triggerEvent(type, event);
+        };
+        this.ondragover = (event) => {
+            // 触发ondrop事件，必须在这个位置阻止浏览器的默认行为,否则监听不到
+            event.preventDefault();
+            this.graph.emit('ondragover', { event, graph: this.graph });
+        };
+        this.element = option.element;
+        this.graph = option.graph;
+        this.initController();
+    }
+    initController() {
+        const el = this.element;
+        EVENTS.forEach((eventName) => {
+            el.addEventListener(eventName, this.eventCallback);
+        });
+    }
+    triggerEvent(eventName, event) {
+        if (eventName === 'dragover') {
+            this.ondragover(event);
+        }
+        else {
+            this.graph.emit(eventName, { event });
+        }
+    }
+    /** 销毁所有事件 */
+    destoryEvents() {
+        const el = this.element;
+        EVENTS.forEach((eventName) => {
+            el.removeEventListener(eventName, this.eventCallback);
+        });
+    }
+    destroy() {
+        // 清理事件
+        this.destoryEvents();
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/core/event/index.ts":
+/*!******************************************!*\
+  !*** ./src/app/lib3/core/event/index.ts ***!
+  \******************************************/
+/*! exports provided: EventController */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _contoller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./contoller */ "./src/app/lib3/core/event/contoller.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EventController", function() { return _contoller__WEBPACK_IMPORTED_MODULE_1__["EventController"]; });
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/graph/base.ts":
+/*!************************************!*\
+  !*** ./src/app/lib3/graph/base.ts ***!
+  \************************************/
+/*! exports provided: GraphBase */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraphBase", function() { return GraphBase; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _core_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/container */ "./src/app/lib3/core/container/index.ts");
+/* harmony import */ var _core_canvas__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/canvas */ "./src/app/lib3/core/canvas/index.ts");
+
+
+
+class GraphBase extends _core_container__WEBPACK_IMPORTED_MODULE_1__["Container"] {
+    constructor(option) {
+        super(option);
+        this.initGraph();
+    }
+    initGraph() {
+        this.initGraphContainer();
+        this.initEvent();
+        this.initPlugins();
+        this.subscript();
+    }
+    initGraphContainer() {
+        const size = this.getSize();
+        const container = this.get('container');
+        const behaviorLayer = this.createDivElement();
+        this.canvas = new _core_canvas__WEBPACK_IMPORTED_MODULE_2__["Canvas"](Object.assign({}, size, { container }));
+        this.activeCanvas = new _core_canvas__WEBPACK_IMPORTED_MODULE_2__["Canvas"](Object.assign({}, size, { container }));
+        this.appendElement(behaviorLayer);
+        this.set('behaviorLayer', behaviorLayer);
+    }
+    packHitShape(shape, type) {
+        return { type, shape };
+    }
+    changeSize(width, height) {
+        const size = this.getSize();
+        this.set('width', width || size.width);
+        this.set('height', height || size.height);
+    }
+    /** canvas 变形矩阵 */
+    transform(a, b, c, d, e, f) {
+        const ctx = this.canvas.ctx;
+        ctx.transform(a, b, c, d, e, f);
+    }
+    /** canvas 移动 */
+    translate(x, y, matrix) {
+        if (matrix) {
+            this.transform(1, 0, 0, 1, x, y);
+            return null;
+        }
+        const ctx = this.canvas.ctx;
+        ctx.translate(x, y);
+    }
+    /** canvas 缩放 */
+    scale(sx, sy, matrix) {
+        const scaleY = sy ? sy : sx;
+        if (matrix) {
+            this.transform(sx, 0, 0, scaleY, 0, 0);
+            return null;
+        }
+        const ctx = this.canvas.ctx;
+        ctx.scale(sx, scaleY);
+    }
+    /** canvas 旋转 */
+    rotate(angle, matrix) {
+        if (matrix) {
+            this.transform(Math.cos(angle * Math.PI / 180), Math.sin(angle * Math.PI / 180), Math.sin(angle * Math.PI / 180), Math.cos(angle * Math.PI / 180), 0, 0);
+            return null;
+        }
+        const ctx = this.canvas.ctx;
+        ctx.rotate(angle);
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/graph/index.ts":
+/*!*************************************!*\
+  !*** ./src/app/lib3/graph/index.ts ***!
+  \*************************************/
+/*! exports provided: Graph */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Graph", function() { return Graph; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./base */ "./src/app/lib3/graph/base.ts");
+/* harmony import */ var _modules_node__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/node */ "./src/app/lib3/modules/node/index.ts");
+/* harmony import */ var _core_event__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../core/event */ "./src/app/lib3/core/event/index.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils */ "./src/app/lib3/utils/index.ts");
+/* harmony import */ var _plugins__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../plugins */ "./src/app/lib3/plugins/index.ts");
+/* harmony import */ var _shapes_node__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shapes/node */ "./src/app/lib3/shapes/node/index.ts");
+
+
+
+
+
+
+
+const LEFT_BUTTON = 1;
+class Graph extends _base__WEBPACK_IMPORTED_MODULE_1__["GraphBase"] {
+    constructor(option) {
+        super(option);
+        this.nodes = [];
+        this.activeNodes = [];
+        this.highRender = true;
+    }
+    getDefaultOption() {
+        return {
+            container: null,
+            width: 500,
+            height: 500,
+            plugins: [
+                new _plugins__WEBPACK_IMPORTED_MODULE_5__["DragNode"](),
+                new _plugins__WEBPACK_IMPORTED_MODULE_5__["CanvasMove"](),
+            ],
+        };
+    }
+    initEvent() {
+        const self = this;
+        const eventController = new _core_event__WEBPACK_IMPORTED_MODULE_3__["EventController"]({
+            element: this.get('behaviorLayer'),
+            graph: self,
+        });
+        this.set('eventController', eventController);
+    }
+    initPlugins() {
+        const plugins = this.get('plugins');
+        if (!plugins || plugins.length === 0) {
+            return null;
+        }
+        const graph = this;
+        for (let idx = 0; idx < plugins.length; idx++) {
+            const plugin = plugins[idx];
+            plugin.invoke(graph);
+        }
+    }
+    addPlugin(plugin) {
+        if (!plugin) {
+            return null;
+        }
+        let plugins = this.get('plugins');
+        if (!plugins || plugins.length === 0) {
+            plugins = [];
+        }
+        const graph = this;
+        plugin.invoke(graph);
+        plugins.push(plugin);
+    }
+    removePlugin(plugin) {
+        const plugins = this.get('plugins');
+        const index = plugins.indexOf(plugin);
+        if (index >= 0) {
+            plugin.destroy();
+            plugins.splice(index, 1);
+        }
+    }
+    subscript() {
+        this.on('mousedown', this.onMouseDown);
+        this.on('mousemove', this.onMouseMove);
+        this.on('mouseup', this.onMouseUp);
+    }
+    onMouseDown({ event }) {
+        this.resetMouseRecord();
+        if (event.button !== 0) {
+            return;
+        }
+        this.mouseDown = { x: event.offsetX, y: event.offsetY };
+        const shape = this.checkMouseShape(this.nodes, 'node');
+        if (shape) {
+            this.moveInShape = shape;
+            this.setActiveShape(shape);
+            if (this.highRender) {
+                this.refreshActiveShape();
+            }
+            this.emit(`mousedown:${shape.type}`, { event, item: shape.item });
+        }
+    }
+    onMouseMove({ event }) {
+        if (!this.mouseDown || event.buttons !== LEFT_BUTTON) {
+            return;
+        }
+        if (this.dragging) {
+            if (this.draggingShape) {
+                const { type, item } = this.draggingShape;
+                this.emit(`${type}:drag`, Object.assign({ event, item }, this.mouseDown));
+            }
+            else {
+                this.emit('canvas:drag', { event });
+            }
+        }
+        else if (this.mouseDown) {
+            this.dragging = true;
+            if (this.moveInShape) {
+                this.draggingShape = this.moveInShape;
+                const { type, item } = this.draggingShape;
+                this.emit(`${type}:dragstart`, Object.assign({ event, item }, this.mouseDown));
+            }
+            else {
+                this.emit('canvas:dragstart', Object.assign({ event }, this.mouseDown));
+            }
+        }
+    }
+    onMouseUp({ event }) {
+        if (!this.moveInShape) {
+            return;
+        }
+        if (this.mouseDown && event.button === LEFT_BUTTON) {
+            const moveInShape = this.moveInShape;
+            if (this.dragging) {
+                if (moveInShape) {
+                    const draggingShape = this.draggingShape;
+                    if (draggingShape) {
+                        const { type, item } = draggingShape;
+                        this.emit(`${type}:drop`, Object.assign({ event, item }, this.mouseDown));
+                    }
+                    this.emit(`${moveInShape.type}:dragend`, Object.assign({ event, item: moveInShape.item }, this.mouseDown));
+                }
+                else {
+                    this.emit('canvas:dragend', Object.assign({ event }, this.mouseDown));
+                }
+                this.draggingShape = undefined;
+                this.dragging = false;
+            }
+            else {
+                if (moveInShape) {
+                    this.emit(`${moveInShape.type}:mouseup`, Object.assign({ event, item: moveInShape.item }, this.mouseDown));
+                    this.moveInShape = undefined;
+                }
+                else {
+                    this.emit('canvas:mouseup', Object.assign({ event }, this.mouseDown));
+                }
+            }
+        }
+        this.mouseDown = undefined;
+    }
+    checkMouseShape(items, itemType) {
+        const { x, y } = this.mouseDown;
+        function eachHit(data, type) {
+            for (let index = data.length - 1; index >= 0; index--) {
+                const item = data[index];
+                if (item && item.hit(x, y)) {
+                    return { type, item };
+                }
+            }
+            return null;
+        }
+        const hitNode = eachHit(items, itemType);
+        if (hitNode) {
+            return hitNode;
+        }
+        return null;
+    }
+    /**
+     * 设置激活形状
+     * @param { type: string; item: Node } activeShape 激活的形状
+     * @description 将基于激活的项进行分类到 active{Shape} 中
+     */
+    setActiveShape(activeShape) {
+        const { type, item } = activeShape;
+        this.activeNodes = [];
+        switch (type) {
+            case 'node':
+                this.activeNodes.push(item);
+                break;
+        }
+    }
+    refreshActiveShape() {
+        const activeNodes = this.activeNodes || [];
+        const activeIds = activeNodes.map((node) => node.id);
+        function eachActive(data, callback) {
+            for (let index = 0; index < data.length; index++) {
+                const item = data[index];
+                const active = activeIds.includes(item.id);
+                if (callback) {
+                    callback(item, active);
+                }
+            }
+        }
+        eachActive(this.nodes, (node, active) => {
+            if (active) {
+                node.hide();
+            }
+            else {
+                node.show();
+            }
+            node.setStatus('active', active);
+        });
+        this.draw(this.activeNodes, this.activeCanvas);
+        setTimeout(() => {
+            this.render();
+        }, 0);
+    }
+    getNodes() {
+        return this.nodes;
+    }
+    read(data, isThrottle) {
+        this.clear();
+        if (data.nodes && data.nodes.length) {
+            const nodes = data.nodes || [];
+            for (let idx = 0; idx < nodes.length; idx++) {
+                const nodeOption = nodes[idx];
+                const node = new _modules_node__WEBPACK_IMPORTED_MODULE_2__["Node"](nodeOption);
+                this.nodes.push(node);
+            }
+        }
+        this.render(isThrottle);
+    }
+    render(isThrottle) {
+        this.renderShpae(this.nodes, isThrottle);
+    }
+    renderShpae(nodes, isThrottle) {
+        if (!nodes || nodes.length === 0) {
+            return null;
+        }
+        this.canvas.clearCanvas();
+        const ctx = this.canvas.ctx;
+        if (isThrottle) {
+            // 节流渲染
+            Object(_utils__WEBPACK_IMPORTED_MODULE_4__["throttleArray"])(this.nodes, (node) => {
+                if (node && node.isShow()) {
+                    node.draw(ctx);
+                }
+            }, 60, 10);
+        }
+        else {
+            // 直接渲染
+            for (let i = 0; i < nodes.length; i++) {
+                const node = nodes[i];
+                if (node && node.isShow()) {
+                    node.draw(ctx);
+                }
+            }
+        }
+    }
+    refresh() {
+        this.draw(this.nodes, this.canvas);
+    }
+    drawActive() {
+        this.draw(this.activeNodes, this.activeCanvas);
+    }
+    draw(nodes, canvas) {
+        const ctx = canvas.ctx;
+        canvas.clearCanvas();
+        if (!nodes || nodes.length === 0) {
+            return null;
+        }
+        nodes.forEach((node) => {
+            node.draw(ctx);
+        });
+    }
+    startHighRender(open) {
+        this.highRender = !!open;
+        this.refresh();
+    }
+    resetMouseRecord() {
+        this.mouseDown = undefined;
+        this.moveInShape = undefined;
+        this.draggingShape = undefined;
+        this.dragging = false;
+    }
+    resetActiveShape() {
+        this.activeNodes = [];
+        if (this.activeCanvas) {
+            this.activeCanvas.clearCanvas();
+        }
+    }
+    clear() {
+        this.nodes = [];
+        if (this.canvas) {
+            this.canvas.clearCanvas();
+        }
+        this.resetActiveShape();
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/index.ts":
+/*!*******************************!*\
+  !*** ./src/app/lib3/index.ts ***!
+  \*******************************/
+/*! exports provided: Graph, registerNode, registerEdge, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerNode", function() { return registerNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerEdge", function() { return registerEdge; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _graph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./graph */ "./src/app/lib3/graph/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Graph", function() { return _graph__WEBPACK_IMPORTED_MODULE_1__["Graph"]; });
+
+/* harmony import */ var _shapes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shapes */ "./src/app/lib3/shapes/index.ts");
+
+
+
+const registerNode = _shapes__WEBPACK_IMPORTED_MODULE_2__["Shape"].registerNode;
+const registerEdge = _shapes__WEBPACK_IMPORTED_MODULE_2__["Shape"].registerEdge;
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    Graph: _graph__WEBPACK_IMPORTED_MODULE_1__["Graph"],
+    registerNode,
+    registerEdge,
+});
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/modules/item/bbox.ts":
+/*!*******************************************!*\
+  !*** ./src/app/lib3/modules/item/bbox.ts ***!
+  \*******************************************/
+/*! exports provided: BBox */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BBox", function() { return BBox; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _point__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./point */ "./src/app/lib3/modules/item/point.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils */ "./src/app/lib3/utils/index.ts");
+
+
+
+class BBox {
+    constructor(option) {
+        this.center = new _point__WEBPACK_IMPORTED_MODULE_1__["Point"](0, 0);
+        this.init(option);
+    }
+    init(option) {
+        this.width = option.width < 0 ? 0 : option.width;
+        this.height = option.height < 0 ? 0 : option.height;
+        this.x = option.x << 0;
+        this.y = option.y << 0;
+        this.minX = this.x;
+        this.minY = this.y;
+        this.maxX = this.x + this.width;
+        this.maxY = this.y + this.height;
+        this.zIndex = option.zIndex || 0;
+        this.calceCenter();
+    }
+    clone() {
+        const config = {
+            x: this.x,
+            y: this.y,
+            width: this.width,
+            height: this.height,
+        };
+        return new BBox(config);
+    }
+    update(option) {
+        const cfg = {
+            x: option.x,
+            y: option.y,
+            width: option.width,
+            height: option.height,
+        };
+        this.width = cfg.width < 0 ? 0 : cfg.width;
+        this.height = cfg.height < 0 ? 0 : cfg.height;
+        this.x = cfg.x << 0;
+        this.y = cfg.y << 0;
+        this.minX = this.x;
+        this.minY = this.y;
+        this.maxX = this.x + this.width;
+        this.maxY = this.y + this.height;
+        this.calceCenter();
+    }
+    calceCenter() {
+        this.center.x = this.x + this.width / 2;
+        this.center.y = this.y + this.height / 2;
+    }
+    hit(x, y, padding = 0) {
+        return x > this.minX - padding && x < this.maxX + padding && y > this.minY - padding && y < this.maxY + padding;
+    }
+    hitBBox(bbox) {
+        return ((bbox.x > this.x && bbox.x < this.maxX && bbox.y > this.y && bbox.y < this.maxY) ||
+            (bbox.maxX > this.x && bbox.maxX < this.maxX && bbox.y > this.y && bbox.y < this.maxY) ||
+            (bbox.maxX > this.x && bbox.maxX < this.maxX && bbox.maxY > this.y && bbox.maxY < this.maxY) ||
+            (bbox.x > this.x && bbox.x < this.maxX && bbox.maxY > this.y && bbox.maxY < this.maxY));
+    }
+    hitRotate(point, rotate, center) {
+        const pts = this.toBBoxs();
+        for (const pt of pts) {
+            pt.rotate(rotate, center);
+        }
+        return Object(_utils__WEBPACK_IMPORTED_MODULE_2__["pointInBBox"])(point, pts);
+    }
+    toBBoxs() {
+        return [
+            new _point__WEBPACK_IMPORTED_MODULE_1__["Point"](this.x, this.y),
+            new _point__WEBPACK_IMPORTED_MODULE_1__["Point"](this.maxX, this.y),
+            new _point__WEBPACK_IMPORTED_MODULE_1__["Point"](this.maxX, this.maxY),
+            new _point__WEBPACK_IMPORTED_MODULE_1__["Point"](this.x, this.maxY)
+        ];
+    }
+    translate(x, y) {
+        this.x += x;
+        this.y += y;
+        this.maxX += x;
+        this.maxY += y;
+        this.calceCenter();
+    }
+    scale(scale, center, scaleY) {
+        if (!center) {
+            center = this.center;
+        }
+        if (scaleY === undefined) {
+            scaleY = scale;
+        }
+        this.x = center.x - (center.x - this.x) * scale;
+        this.y = center.y - (center.y - this.y) * scaleY;
+        this.width *= scale;
+        this.height *= scaleY;
+        this.maxX = this.x + this.width;
+        this.maxY = this.y + this.height;
+        this.calceCenter();
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/modules/item/index.ts":
+/*!********************************************!*\
+  !*** ./src/app/lib3/modules/item/index.ts ***!
+  \********************************************/
+/*! exports provided: Item */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Item", function() { return Item; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _core_abstract_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../core/abstract/item */ "./src/app/lib3/core/abstract/item.ts");
+/* harmony import */ var _shapes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../shapes */ "./src/app/lib3/shapes/index.ts");
+/* harmony import */ var _bbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bbox */ "./src/app/lib3/modules/item/bbox.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils */ "./src/app/lib3/utils/index.ts");
+
+
+
+
+
+class Item extends _core_abstract_item__WEBPACK_IMPORTED_MODULE_1__["AbstractItem"] {
+    constructor(option) {
+        super(option);
+        this.status = new Set();
+        this.initItem();
+    }
+    initItem() {
+        const bboxOption = this.getBboxOption();
+        this.bbox = new _bbox__WEBPACK_IMPORTED_MODULE_3__["BBox"](bboxOption);
+        const id = this.get('id');
+        this.id = id || Object(_utils__WEBPACK_IMPORTED_MODULE_4__["uuid8"])();
+    }
+    draw(ctx) {
+        const shapeName = this.get('shapeName');
+        const self = this;
+        const shape = this.getShapeOption();
+        if (!shape) {
+            console.warn('没有获取到有效的图形', shapeName, this.shapeType);
+            return null;
+        }
+        shape.draw(ctx, self);
+    }
+    getShapeOption() {
+        return _shapes__WEBPACK_IMPORTED_MODULE_2__["Shape"].getShape(this.shapeType, this.get('shapeName'));
+    }
+    /** 碰撞检测 */
+    hit(x, y, padding) {
+        const pad = this.getHitPadding(padding);
+        const left = pad[0];
+        const top = pad[1];
+        const right = pad[2];
+        const bottom = pad[3];
+        const bbox = this.getBBox();
+        const boxMinX = bbox.minX - left;
+        const boxMinY = bbox.minY - top;
+        const boxMaxX = bbox.maxX + right;
+        const boxMaxY = bbox.maxY + bottom;
+        if ((x >= boxMinX && x <= boxMaxX) && (y >= boxMinY && y <= boxMaxY)) {
+            return true;
+        }
+        return false;
+    }
+    getHitPadding(padding) {
+        return Object(_utils__WEBPACK_IMPORTED_MODULE_4__["derivativeStyle"])(padding);
+    }
+    updateBBox() {
+        const bboxOption = this.getBboxOption();
+        this.bbox.update(bboxOption);
+    }
+    getBBox() {
+        return this.bbox;
+    }
+    translate(x, y) {
+        const bbox = this.getBBox();
+        this.set('x', bbox.x + x);
+        this.set('y', bbox.y + y);
+        this.updateBBox();
+    }
+    setStatus(status, active) {
+        if (active) {
+            if (!this.status.has(status)) {
+                this.status.add(status);
+            }
+            return;
+        }
+        this.status.delete(status);
+    }
+    getStatus(status) {
+        if (status) {
+            return this.status.has(status);
+        }
+        const output = [];
+        this.status.forEach((statu) => {
+            output.push(statu);
+        });
+        return output;
+    }
+    hide() {
+        this.set('hide', true);
+    }
+    show() {
+        this.set('hide', false);
+    }
+    isShow() {
+        const isHide = this.get('hide');
+        return !isHide;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/modules/item/point.ts":
+/*!********************************************!*\
+  !*** ./src/app/lib3/modules/item/point.ts ***!
+  \********************************************/
+/*! exports provided: Point */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Point", function() { return Point; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    floor() {
+        this.x |= 0;
+        this.y |= 0;
+    }
+    round() {
+        this.x = Math.round(this.x);
+        this.y = Math.round(this.y);
+    }
+    rotate(angle, center) {
+        if (!angle || angle === 360) {
+            return this;
+        }
+        angle *= Math.PI / 180;
+        const x = (this.x - center.x) * Math.cos(angle) - (this.y - center.y) * Math.sin(angle) + center.x;
+        const y = (this.x - center.x) * Math.sin(angle) + (this.y - center.y) * Math.cos(angle) + center.y;
+        this.x = x;
+        this.y = y;
+        return this;
+    }
+    hit(pt, radius = 5) {
+        return pt.x > this.x - radius && pt.x < this.x + radius && pt.y > this.y - radius && pt.y < this.y + radius;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/modules/node/index.ts":
+/*!********************************************!*\
+  !*** ./src/app/lib3/modules/node/index.ts ***!
+  \********************************************/
+/*! exports provided: Node */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Node", function() { return Node; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../item */ "./src/app/lib3/modules/item/index.ts");
+
+
+class Node extends _item__WEBPACK_IMPORTED_MODULE_1__["Item"] {
+    constructor(option) {
+        super(option);
+        this.shapeType = 'node';
+    }
+    getOption() {
+        return this.option;
+    }
+    getBboxOption() {
+        const option = this.getOption();
+        const bboxOption = {
+            x: option.x,
+            y: option.y,
+            width: option.width,
+            height: option.height,
+        };
+        return bboxOption;
+    }
+    updatePosition(x, y) {
+        this.set('x', x);
+        this.set('y', y);
+        this.updateBBox();
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/modules/plugin/index.ts":
+/*!**********************************************!*\
+  !*** ./src/app/lib3/modules/plugin/index.ts ***!
+  \**********************************************/
+/*! exports provided: PluginCore */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PluginCore", function() { return PluginCore; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class PluginCore {
+    constructor(option) {
+        this.option = option || {};
+    }
+    /** 激活函数,由 Graph 内部激活,并触发 初始化函数 */
+    invoke(graph) {
+        this.set('graph', graph);
+        this.initPlugin();
+    }
+    get(key) {
+        return this.option[key];
+    }
+    set(key, value) {
+        this.option[key] = value;
+    }
+    destroy() {
+        this.option = undefined;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/plugins/dragNode.ts":
+/*!******************************************!*\
+  !*** ./src/app/lib3/plugins/dragNode.ts ***!
+  \******************************************/
+/*! exports provided: DragNode */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DragNode", function() { return DragNode; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _modules_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/plugin */ "./src/app/lib3/modules/plugin/index.ts");
+
+
+class DragNode extends _modules_plugin__WEBPACK_IMPORTED_MODULE_1__["PluginCore"] {
+    constructor() {
+        super(...arguments);
+        this.shouledAnimationFrame = false;
+        /** 图形拖拽 */
+        this.onShapeDragStart = ({ item, x, y }) => {
+            const bbox = item.getBBox();
+            this.mouseDown = { x, y };
+            this.draggableBox = { x: bbox.x, y: bbox.y };
+        };
+        /** 图形拖拽中 */
+        this.onShapeDrag = ({ event, item }) => {
+            if (this.shouledAnimationFrame || !this.mouseDown) {
+                return null;
+            }
+            this.shouledAnimationFrame = true;
+            const movex = (event.offsetX - this.mouseDown.x) << 0;
+            const movey = (event.offsetY - this.mouseDown.y) << 0;
+            const { x, y } = this.draggableBox;
+            requestAnimationFrame(() => {
+                const graph = this.get('graph');
+                item.updatePosition(x + movex, y + movey);
+                if (graph.highRender) {
+                    graph.drawActive();
+                }
+                else {
+                    graph.refresh();
+                }
+                this.shouledAnimationFrame = false;
+            });
+        };
+        /** 图形拖拽完 */
+        this.onShapeDrop = ({ event, item }) => {
+            const graph = this.get('graph');
+            if (graph.highRender) {
+                graph.activeNodes.forEach((node) => {
+                    node.show();
+                });
+                graph.activeNodes = [];
+                graph.drawActive();
+                graph.render();
+            }
+            else {
+                graph.refresh();
+            }
+        };
+    }
+    initPlugin() {
+        const graph = this.get('graph');
+        graph.on('node:dragstart', this.onShapeDragStart);
+        graph.on('node:drag', this.onShapeDrag);
+        graph.on('node:drop', this.onShapeDrop);
+    }
+    resetMouseRecord() {
+        this.mouseDown = undefined;
+        this.draggableBox = undefined;
+        this.shouledAnimationFrame = false;
+    }
+    destroy() {
+        super.destroy();
+        this.resetMouseRecord();
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/plugins/index.ts":
+/*!***************************************!*\
+  !*** ./src/app/lib3/plugins/index.ts ***!
+  \***************************************/
+/*! exports provided: DragNode, CanvasMove */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _dragNode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dragNode */ "./src/app/lib3/plugins/dragNode.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DragNode", function() { return _dragNode__WEBPACK_IMPORTED_MODULE_1__["DragNode"]; });
+
+/* harmony import */ var _moveCanvas__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./moveCanvas */ "./src/app/lib3/plugins/moveCanvas.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CanvasMove", function() { return _moveCanvas__WEBPACK_IMPORTED_MODULE_2__["CanvasMove"]; });
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/plugins/moveCanvas.ts":
+/*!********************************************!*\
+  !*** ./src/app/lib3/plugins/moveCanvas.ts ***!
+  \********************************************/
+/*! exports provided: CanvasMove */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CanvasMove", function() { return CanvasMove; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _modules_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/plugin */ "./src/app/lib3/modules/plugin/index.ts");
+
+
+class CanvasMove extends _modules_plugin__WEBPACK_IMPORTED_MODULE_1__["PluginCore"] {
+    constructor(option) {
+        super(option);
+        this.onDragStart = ({ x, y }) => {
+            this.mouseDown = { x, y };
+        };
+        this.onDrag = ({ event }) => {
+            const movex = (event.offsetX - this.mouseDown.x) << 0;
+            const movey = (event.offsetY - this.mouseDown.y) << 0;
+            const graph = this.get('graph');
+            console.log('graph----->', movex, movey);
+            graph.translate(movex, movey);
+            graph.render();
+        };
+        this.onDrop = () => {
+            const graph = this.get('graph');
+        };
+    }
+    initPlugin() {
+        const graph = this.get('graph');
+        graph.on('canvas:dragstart', this.onDragStart);
+        graph.on('canvas:drag', this.onDrag);
+        graph.on('canvas:drop', this.onDrop);
+    }
+    destroy() {
+        super.destroy();
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/service/store/index.ts":
+/*!*********************************************!*\
+  !*** ./src/app/lib3/service/store/index.ts ***!
+  \*********************************************/
+/*! exports provided: shapeStore */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _shape__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shape */ "./src/app/lib3/service/store/shape.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "shapeStore", function() { return _shape__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/service/store/shape.ts":
+/*!*********************************************!*\
+  !*** ./src/app/lib3/service/store/shape.ts ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class ShapeStore {
+    constructor() {
+        this.shapes = {};
+    }
+    addShape(type, name, shapeOption, extendShapeName) {
+        const extendShape = extendShapeName ? this.getShape(type, extendShapeName) : null;
+        shapeOption.name = name;
+        if (!this.shapes) {
+            this.shapes = {};
+        }
+        if (!this.shapes[type]) {
+            this.shapes[type] = {};
+        }
+        if (extendShape) {
+            const shape = Object.assign({}, extendShape, shapeOption);
+            this.shapes[type][name] = shape;
+        }
+        else {
+            this.shapes[type][name] = shapeOption;
+        }
+    }
+    getShape(type, name) {
+        if (!this.shapes[type]) {
+            return undefined;
+        }
+        return this.shapes[type][name];
+    }
+    get(key) {
+        return this[key];
+    }
+    destroy() {
+        this.shapes = undefined;
+    }
+}
+/* harmony default export */ __webpack_exports__["default"] = (new ShapeStore());
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/shapes/index.ts":
+/*!**************************************!*\
+  !*** ./src/app/lib3/shapes/index.ts ***!
+  \**************************************/
+/*! exports provided: Shape */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _shape__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shape */ "./src/app/lib3/shapes/shape.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Shape", function() { return _shape__WEBPACK_IMPORTED_MODULE_1__["Shape"]; });
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/shapes/node/base.ts":
+/*!******************************************!*\
+  !*** ./src/app/lib3/shapes/node/base.ts ***!
+  \******************************************/
+/*! exports provided: baseNode */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseNode", function() { return baseNode; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./src/app/lib3/utils/index.ts");
+
+
+const baseNode = {
+    option: {
+        style: {
+            fillStyle: '#0000ff',
+            strokeStyle: '#222',
+        },
+        labelStyle: {
+            color: '#f00',
+            fontFamily: '"Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial',
+            fontSize: 12,
+            lineHeight: 1.5,
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            textAlign: 'center',
+            textBaseline: 'middle',
+            background: ''
+        },
+    },
+    getOptions(option) {
+        return Object(_utils__WEBPACK_IMPORTED_MODULE_1__["merge"])(this.option, option);
+    },
+    draw(ctx, node) {
+        // 绘制包裹区域
+        this.drawContainer(ctx, node);
+        // 绘制文字
+        // this.drawText(ctx, node);
+    },
+    drawContainer(ctx, node) {
+        const option = node.getOption();
+        const { style } = this.getOptions(option);
+        const bbox = node.getBBox();
+        ctx.save();
+        ctx.beginPath();
+        ctx.ellipse(bbox.center.x, bbox.center.y, bbox.width / 2, bbox.height / 2, 0, 0, Math.PI * 2);
+        this.attr(ctx, style);
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+        // console.log('bbox------>', bbox);
+        // console.log('绘制图像', style);
+    },
+    attr(ctx, attr) {
+        Object(_utils__WEBPACK_IMPORTED_MODULE_1__["applyAttrsToContext"])(ctx, attr);
+    }
+};
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/shapes/node/index.ts":
+/*!*******************************************!*\
+  !*** ./src/app/lib3/shapes/node/index.ts ***!
+  \*******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _shape__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shape */ "./src/app/lib3/shapes/shape.ts");
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./base */ "./src/app/lib3/shapes/node/base.ts");
+
+
+
+_shape__WEBPACK_IMPORTED_MODULE_1__["Shape"].registerNode('base-node', _base__WEBPACK_IMPORTED_MODULE_2__["baseNode"]);
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/shapes/shape.ts":
+/*!**************************************!*\
+  !*** ./src/app/lib3/shapes/shape.ts ***!
+  \**************************************/
+/*! exports provided: Shape */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Shape", function() { return Shape; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _service_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../service/store */ "./src/app/lib3/service/store/index.ts");
+
+
+class Shape {
+    // 注册节点
+    static registerNode(name, shapeOption, extendShapeName) {
+        _service_store__WEBPACK_IMPORTED_MODULE_1__["shapeStore"].addShape('node', name, shapeOption, extendShapeName);
+    }
+    // 注册边
+    static registerEdge(name, shapeOption, extendShapeName) {
+        _service_store__WEBPACK_IMPORTED_MODULE_1__["shapeStore"].addShape('edge', name, shapeOption, extendShapeName);
+    }
+    static getShape(type, name) {
+        return _service_store__WEBPACK_IMPORTED_MODULE_1__["shapeStore"].getShape(type, name);
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/utils/canvas.ts":
+/*!**************************************!*\
+  !*** ./src/app/lib3/utils/canvas.ts ***!
+  \**************************************/
+/*! exports provided: applyAttrsToContext, pointInBBox */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "applyAttrsToContext", function() { return applyAttrsToContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pointInBBox", function() { return pointInBBox; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+const SHAPE_ATTRS_MAP = {
+    fill: 'fillStyle',
+    stroke: 'strokeStyle',
+    opacity: 'globalAlpha',
+};
+function applyAttrsToContext(context, arrts) {
+    for (const key in arrts) {
+        // 转换不与 canvas 兼容的属性名
+        const name = SHAPE_ATTRS_MAP[key] ? SHAPE_ATTRS_MAP[key] : key;
+        context[name] = arrts[key];
+    }
+}
+function pointInBBox(point, vertices) {
+    if (vertices.length < 3) {
+        return false;
+    }
+    let isIn = false;
+    let last = vertices[vertices.length - 1];
+    for (const item of vertices) {
+        if ((item.y < point.y && last.y >= point.y) || (item.y >= point.y && last.y < point.y)) {
+            if (item.x + ((point.y - item.y) * (last.x - item.x)) / (last.y - item.y) > point.x) {
+                isIn = !isIn;
+            }
+        }
+        last = item;
+    }
+    return isIn;
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/utils/healper/common.ts":
+/*!**********************************************!*\
+  !*** ./src/app/lib3/utils/healper/common.ts ***!
+  \**********************************************/
+/*! exports provided: derivativeStyle, derivativeStyleObject, toString, isBrowser, getPixelRatio, upperFirst, uuid8, throttleArray, throttleArrayFunc */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "derivativeStyle", function() { return derivativeStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "derivativeStyleObject", function() { return derivativeStyleObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toString", function() { return toString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBrowser", function() { return isBrowser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPixelRatio", function() { return getPixelRatio; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "upperFirst", function() { return upperFirst; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uuid8", function() { return uuid8; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "throttleArray", function() { return throttleArray; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "throttleArrayFunc", function() { return throttleArrayFunc; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _dataType__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dataType */ "./src/app/lib3/utils/healper/dataType.ts");
+
+
+/**
+ * 衍生样式数据，会像css中的样式一样进行自动扩展
+ * @param data number | number[]
+ */
+function derivativeStyle(data) {
+    const defaultData = [0, 0, 0, 0];
+    if (!data) {
+        return defaultData;
+    }
+    if (Object(_dataType__WEBPACK_IMPORTED_MODULE_1__["isNumber"])(data)) {
+        const int = Math.floor(data);
+        return [int, int, int, int];
+    }
+    if (Object(_dataType__WEBPACK_IMPORTED_MODULE_1__["isArray"])(data) && data.length > 0) {
+        switch (data.length) {
+            case 1:
+                return [data[0], data[0], data[0], data[0]];
+            case 2:
+                return [data[0], data[1], data[0], data[1]];
+            case 3:
+                return [data[0], data[1], data[2], data[1]];
+            case 4:
+                return [data[0], data[1], data[2], data[3]];
+            default:
+                break;
+        }
+    }
+    return defaultData;
+}
+/**
+ * 对象化样式数据
+ * @param data number | number[]
+ */
+function derivativeStyleObject(data) {
+    const styleData = derivativeStyle(data);
+    return {
+        top: styleData[0],
+        right: styleData[1],
+        bottom: styleData[2],
+        left: styleData[3],
+    };
+}
+function toString(value) {
+    if (Object(_dataType__WEBPACK_IMPORTED_MODULE_1__["isNil"])(value)) {
+        return '';
+    }
+    return value.toString();
+}
+const isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
+function getPixelRatio() {
+    return window ? window.devicePixelRatio : 1;
+}
+// 首字母大写
+function upperFirst(value) {
+    const str = toString(value);
+    return str.charAt(0).toUpperCase() + str.substring(1);
+}
+function uuid8() {
+    return (((1 + Math.random()) * 0x100000000) | 0).toString(16).substring(1);
+}
+/**
+ * 数组节流 throttleArray
+ * 属于一个异步执行函数
+ * @param arr 数组
+ * @param cb 回调函数
+ * @param count 一次render的个数
+ * @param interval 一次render的时长
+ */
+function throttleArray(arr, cb, count, interval) {
+    let timer;
+    let index = 0;
+    const length = arr.length;
+    function start() {
+        for (let idx = 0; idx < Math.min(count || 1, length - index); idx++) {
+            const item = arr[index];
+            index++;
+            cb(item);
+        }
+    }
+    function loop() {
+        timer = setInterval(() => {
+            if (length === 0) {
+                clearInterval(timer);
+            }
+            start();
+        }, interval || 200);
+    }
+    loop();
+}
+/**
+ * 数组节流 throttleArray
+ * 属于一个异步执行函数
+ * @param arr 数组
+ * @param cb 回调函数
+ * @param count 一次render的个数
+ * @param interval 一次render的时长
+ * @return 返回一个执行函数,以便控制何时开始
+ */
+function throttleArrayFunc(arr, cb, count, interval) {
+    let timer;
+    function start() {
+        for (let idx = 0; idx < Math.min(count || 1, arr.length); idx++) {
+            const item = arr.shift();
+            cb(item);
+        }
+    }
+    function loop() {
+        timer = setInterval(() => {
+            if (arr.length === 0) {
+                clearInterval(timer);
+            }
+            start();
+        }, interval || 200);
+    }
+    return loop;
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/utils/healper/dataType.ts":
+/*!************************************************!*\
+  !*** ./src/app/lib3/utils/healper/dataType.ts ***!
+  \************************************************/
+/*! exports provided: getDataType, isString, isNumber, isObject, isArray, isBoolean, isFunction, isDate, isInteger, isFloat, isNull, isUndefined, isNil */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDataType", function() { return getDataType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isString", function() { return isString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isNumber", function() { return isNumber; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isObject", function() { return isObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isArray", function() { return isArray; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBoolean", function() { return isBoolean; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isFunction", function() { return isFunction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDate", function() { return isDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isInteger", function() { return isInteger; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isFloat", function() { return isFloat; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isNull", function() { return isNull; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isUndefined", function() { return isUndefined; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isNil", function() { return isNil; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+function getDataType(data) {
+    return Object.prototype.toString.call(data);
+}
+function isString(data) {
+    return getDataType(data) === '[object String]';
+}
+function isNumber(data) {
+    return getDataType(data) === '[object Number]';
+}
+function isObject(data) {
+    return getDataType(data) === '[object Object]';
+}
+function isArray(data) {
+    return getDataType(data) === '[object Array]';
+}
+function isBoolean(data) {
+    return data === true || data === false || getDataType(data) === '[object Boolean]';
+}
+function isFunction(data) {
+    return typeof data === 'function';
+}
+function isDate(data) {
+    return data instanceof Date;
+}
+function isInteger(data) {
+    if (!isNumber(data)) {
+        return false;
+    }
+    return parseInt(data, 10) === parseFloat(data);
+}
+function isFloat(data) {
+    if (!isNumber(data)) {
+        return false;
+    }
+    return parseInt(data, 10) !== parseFloat(data);
+}
+function isNull(data) {
+    return getDataType(data) === '[object Null]';
+}
+function isUndefined(data) {
+    return getDataType(data) === '[object Undefined]';
+}
+function isNil(data) {
+    return isUndefined(data) || isNull(data);
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/utils/healper/mix.ts":
+/*!*******************************************!*\
+  !*** ./src/app/lib3/utils/healper/mix.ts ***!
+  \*******************************************/
+/*! exports provided: mix */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mix", function() { return mix; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+function mix(target, ...args) {
+    return Object.assign(target, ...args);
+}
+
+
+/***/ }),
+
+/***/ "./src/app/lib3/utils/index.ts":
+/*!*************************************!*\
+  !*** ./src/app/lib3/utils/index.ts ***!
+  \*************************************/
+/*! exports provided: cloneDeep, merge, mergeWith, isArray, pick, mix, derivativeStyle, derivativeStyleObject, toString, isBrowser, getPixelRatio, upperFirst, uuid8, throttleArray, throttleArrayFunc, getDataType, isString, isNumber, isObject, isBoolean, isFunction, isDate, isInteger, isFloat, isNull, isUndefined, isNil, applyAttrsToContext, pointInBBox */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cloneDeep", function() { return lodash__WEBPACK_IMPORTED_MODULE_1__["cloneDeep"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "merge", function() { return lodash__WEBPACK_IMPORTED_MODULE_1__["merge"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mergeWith", function() { return lodash__WEBPACK_IMPORTED_MODULE_1__["mergeWith"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isArray", function() { return lodash__WEBPACK_IMPORTED_MODULE_1__["isArray"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "pick", function() { return lodash__WEBPACK_IMPORTED_MODULE_1__["pick"]; });
+
+/* harmony import */ var _healper_mix__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./healper/mix */ "./src/app/lib3/utils/healper/mix.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mix", function() { return _healper_mix__WEBPACK_IMPORTED_MODULE_2__["mix"]; });
+
+/* harmony import */ var _healper_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./healper/common */ "./src/app/lib3/utils/healper/common.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "derivativeStyle", function() { return _healper_common__WEBPACK_IMPORTED_MODULE_3__["derivativeStyle"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "derivativeStyleObject", function() { return _healper_common__WEBPACK_IMPORTED_MODULE_3__["derivativeStyleObject"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "toString", function() { return _healper_common__WEBPACK_IMPORTED_MODULE_3__["toString"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isBrowser", function() { return _healper_common__WEBPACK_IMPORTED_MODULE_3__["isBrowser"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getPixelRatio", function() { return _healper_common__WEBPACK_IMPORTED_MODULE_3__["getPixelRatio"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "upperFirst", function() { return _healper_common__WEBPACK_IMPORTED_MODULE_3__["upperFirst"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "uuid8", function() { return _healper_common__WEBPACK_IMPORTED_MODULE_3__["uuid8"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "throttleArray", function() { return _healper_common__WEBPACK_IMPORTED_MODULE_3__["throttleArray"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "throttleArrayFunc", function() { return _healper_common__WEBPACK_IMPORTED_MODULE_3__["throttleArrayFunc"]; });
+
+/* harmony import */ var _healper_dataType__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./healper/dataType */ "./src/app/lib3/utils/healper/dataType.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getDataType", function() { return _healper_dataType__WEBPACK_IMPORTED_MODULE_4__["getDataType"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isString", function() { return _healper_dataType__WEBPACK_IMPORTED_MODULE_4__["isString"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isNumber", function() { return _healper_dataType__WEBPACK_IMPORTED_MODULE_4__["isNumber"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isObject", function() { return _healper_dataType__WEBPACK_IMPORTED_MODULE_4__["isObject"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isBoolean", function() { return _healper_dataType__WEBPACK_IMPORTED_MODULE_4__["isBoolean"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isFunction", function() { return _healper_dataType__WEBPACK_IMPORTED_MODULE_4__["isFunction"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isDate", function() { return _healper_dataType__WEBPACK_IMPORTED_MODULE_4__["isDate"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isInteger", function() { return _healper_dataType__WEBPACK_IMPORTED_MODULE_4__["isInteger"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isFloat", function() { return _healper_dataType__WEBPACK_IMPORTED_MODULE_4__["isFloat"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isNull", function() { return _healper_dataType__WEBPACK_IMPORTED_MODULE_4__["isNull"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isUndefined", function() { return _healper_dataType__WEBPACK_IMPORTED_MODULE_4__["isUndefined"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isNil", function() { return _healper_dataType__WEBPACK_IMPORTED_MODULE_4__["isNil"]; });
+
+/* harmony import */ var _canvas__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./canvas */ "./src/app/lib3/utils/canvas.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "applyAttrsToContext", function() { return _canvas__WEBPACK_IMPORTED_MODULE_5__["applyAttrsToContext"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "pointInBBox", function() { return _canvas__WEBPACK_IMPORTED_MODULE_5__["pointInBBox"]; });
+
+
+
+
+
+
+
+/** lodash */
+
+
+
+/***/ }),
+
 /***/ "./src/app/modules/example/canvas-example/canvas-example.component.less":
 /*!******************************************************************************!*\
   !*** ./src/app/modules/example/canvas-example/canvas-example.component.less ***!
@@ -27794,8 +30694,15 @@ let CanvasExampleComponent = class CanvasExampleComponent {
     }
     singleData() {
         this.canvas.clear();
-        const model = this.createOndeModule();
+        const model = this.createOndeModule(true);
         this.canvas.addItem(model);
+    }
+    linkData() {
+        this.canvas.clear();
+        const nodea = this.createOndeModule(true, 'node1', 200, 100);
+        const nodeb = this.createOndeModule(true, 'node2', 300, 400);
+        const edge = this.createEdgeModule('edge1', 'node1', 'node2');
+        this.canvas.read({ nodes: [nodea, nodeb], edges: [edge] });
     }
     throttleData() {
         const size = this.size;
@@ -27811,7 +30718,7 @@ let CanvasExampleComponent = class CanvasExampleComponent {
         const size = this.size;
         const number = isNaN(Number(this.moreNumber)) ? 0 : Number(this.moreNumber);
         const shapes = this.createDraw(number, size.width - 100, size.height - 100);
-        this.canvas.read(shapes);
+        this.canvas.read({ nodes: shapes, edges: [] });
     }
     getBindEvent() {
         const event = this.canvas.getEvents();
@@ -27826,17 +30733,17 @@ let CanvasExampleComponent = class CanvasExampleComponent {
             const { shape } = event;
             if (shape && shape.model) {
                 console.log('我收到监听消息,你选中了%c%s', 'color: red; font-weight: 700; font-size: 24px;', `节点: ${shape.model.label}`);
-                console.log('详细信息', shape.model);
+                console.log('详细信息', shape);
             }
         });
         this.canvas.on('mouseup', () => {
             console.log('我收到监听消息,你弹起了鼠标');
         });
     }
-    createOndeModule() {
+    createOndeModule(anchor, nodeId, x, y) {
         const model = {
-            x: 200,
-            y: 100,
+            x: x || 200,
+            y: y || 100,
             width: 120,
             height: 60,
             label: 'text',
@@ -27847,14 +30754,34 @@ let CanvasExampleComponent = class CanvasExampleComponent {
             labelStyle: {
                 fontSize: 20,
                 color: '#FFF'
+            },
+            anchor,
+        };
+        if (nodeId) {
+            model.id = nodeId;
+        }
+        return model;
+    }
+    createEdgeModule(edgeId, source, target) {
+        const model = {
+            shapeName: 'line',
+            source: source || 'node-1',
+            target: target || 'node-2',
+            sourceAnchorIndex: 3,
+            targetAnchorIndex: 1,
+            style: {
+                fillStyle: '#4d9f0c',
             }
         };
+        if (edgeId) {
+            model.id = edgeId;
+        }
         return model;
     }
     createDraw(count, x, y) {
         const output = [];
         for (let idx = 0; idx < count; idx++) {
-            const nodeConfig = this.createOndeModule();
+            const nodeConfig = this.createOndeModule(false);
             nodeConfig.label = `${idx}`;
             nodeConfig.width = 30;
             nodeConfig.height = 30;
@@ -27876,7 +30803,8 @@ let CanvasExampleComponent = class CanvasExampleComponent {
             labelStyle: {
                 fontSize: 20,
                 color: '#FFF'
-            }
+            },
+            anchor: true,
         };
         if (item.shapeName === 'circle') {
             base.height = base.width;
@@ -27903,6 +30831,203 @@ CanvasExampleComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/modules/example/canvas2-example/canvas2-example.component.less":
+/*!********************************************************************************!*\
+  !*** ./src/app/modules/example/canvas2-example/canvas2-example.component.less ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  display: block;\n  width: 100%;\n}\n:host > div {\n  box-sizing: border-box;\n}\n.toolBar {\n  display: flex;\n  width: 100%;\n  height: 64px;\n  margin-bottom: 30px;\n  justify-content: center;\n  align-items: center;\n}\n.btn {\n  display: inline-block;\n  padding: 0 20px;\n  height: 40px;\n  border: 1px solid #7202bb;\n  color: #7202bb;\n  text-align: center;\n  line-height: 40px;\n  font-size: 16px;\n  font-weight: 600;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin-right: 20px;\n}\n.btn:hover {\n  border: 1px solid #7202bb;\n  color: #ffffff;\n  background: rgba(113, 2, 187, 0.5);\n}\n.btn:active {\n  border: 1px solid #7202bb;\n  color: #7202bb;\n  background: rgba(113, 2, 187, 0.2);\n}\n.active {\n  color: #ffffff;\n  background: #7202bb;\n}\n.form {\n  padding-left: 50px;\n}\n.form .formItem {\n  height: 36px;\n  line-height: 36px;\n  margin-bottom: 20px;\n}\n.form .formItem input {\n  width: 120px;\n  height: 30px;\n  outline: none;\n  border: 1px solid #7202bb;\n  font-size: 16px;\n  font-weight: 900;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n.flow {\n  display: flex;\n  justify-content: center;\n}\n.flow .left {\n  width: 120px;\n  margin-right: 20px;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  text-align: center;\n}\n.flow .left .item {\n  display: block;\n  width: 100%;\n  height: 60px;\n  border: 1px solid #7202bb;\n  margin-bottom: 20px;\n  text-align: center;\n  line-height: 60px;\n  font-weight: 900;\n  font-size: 20px;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.flow .right {\n  border: 1px solid #ccc;\n}\n.graphcontainer {\n  width: 800px;\n  height: 600px;\n  min-width: 200px;\n  position: relative;\n  background: #fff;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3FpbmdsaXUvcHJvamVjdC9zZWxmL2NvZGUvY2FudmFzLWVuZ2luZS1kZW1vL3NyYy9hcHAvbW9kdWxlcy9leGFtcGxlL2NhbnZhczItZXhhbXBsZS9jYW52YXMyLWV4YW1wbGUuY29tcG9uZW50Lmxlc3MiLCJzcmMvYXBwL21vZHVsZXMvZXhhbXBsZS9jYW52YXMyLWV4YW1wbGUvY2FudmFzMi1leGFtcGxlLmNvbXBvbmVudC5sZXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUlBO0VBQ0UsY0FBQTtFQUNBLFdBQUE7QUNIRjtBREtFO0VBQ0Usc0JBQUE7QUNISjtBRE9BO0VBQ0UsYUFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsbUJBQUE7RUFDQSx1QkFBQTtFQUNBLG1CQUFBO0FDTEY7QURPQTtFQUNFLHFCQUFBO0VBQ0EsZUFBQTtFQUNBLFlBQUE7RUFDQSx5QkFBQTtFQUNBLGNBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLHlCQUFBO0tBQUEsc0JBQUE7TUFBQSxxQkFBQTtVQUFBLGlCQUFBO0VBQ0Esa0JBQUE7QUNMRjtBRE1FO0VBQ0UseUJBQUE7RUFDQSxjQUFBO0VBQ0Esa0NBQUE7QUNKSjtBRE1FO0VBQ0UseUJBQUE7RUFDQSxjQUFBO0VBQ0Esa0NBQUE7QUNKSjtBRE9BO0VBQ0UsY0FBQTtFQUNBLG1CQUFBO0FDTEY7QURPQTtFQUNFLGtCQUFBO0FDTEY7QURJQTtFQUdJLFlBQUE7RUFDQSxpQkFBQTtFQUNBLG1CQUFBO0FDSko7QUREQTtFQU9NLFlBQUE7RUFDQSxZQUFBO0VBQ0EsYUFBQTtFQUNBLHlCQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtBQ0hOO0FET0E7RUFDRSxhQUFBO0VBQ0EsdUJBQUE7QUNMRjtBREdBO0VBSUksWUFBQTtFQUNBLGtCQUFBO0VBQ0EsaUJBQUE7RUFDQSxvQkFBQTtFQUNBLGtCQUFBO0FDSko7QURKQTtFQVVNLGNBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLHlCQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EsZUFBQTtFQUNBLHlCQUFBO0tBQUEsc0JBQUE7TUFBQSxxQkFBQTtVQUFBLGlCQUFBO0FDSE47QURqQkE7RUF3Qkksc0JBQUE7QUNKSjtBRFFBO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsZ0JBQUE7QUNORiIsImZpbGUiOiJzcmMvYXBwL21vZHVsZXMvZXhhbXBsZS9jYW52YXMyLWV4YW1wbGUvY2FudmFzMi1leGFtcGxlLmNvbXBvbmVudC5sZXNzIiwic291cmNlc0NvbnRlbnQiOlsiQGNvbG9yOiAjNzIwMmJiO1xuQGhvdmVyLWNvbG9yOiByZ2JhKDExMywgMiwgMTg3LCAwLjUpO1xuQGhvdmVyLWFjdGl2ZTogcmdiYSgxMTMsIDIsIDE4NywgMC4yKTtcblxuOmhvc3Qge1xuICBkaXNwbGF5OiBibG9jaztcbiAgd2lkdGg6IDEwMCU7XG5cbiAgJiA+IGRpdiB7XG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgfVxufVxuXG4udG9vbEJhciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDY0cHg7XG4gIG1hcmdpbi1ib3R0b206IDMwcHg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuLmJ0biB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgcGFkZGluZzogMCAyMHB4O1xuICBoZWlnaHQ6IDQwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkIEBjb2xvcjtcbiAgY29sb3I6IEBjb2xvcjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBsaW5lLWhlaWdodDogNDBweDtcbiAgZm9udC1zaXplOiAxNnB4O1xuICBmb250LXdlaWdodDogNjAwO1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHVzZXItc2VsZWN0OiBub25lO1xuICBtYXJnaW4tcmlnaHQ6IDIwcHg7XG4gICY6aG92ZXIge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIEBjb2xvcjtcbiAgICBjb2xvcjogI2ZmZmZmZjtcbiAgICBiYWNrZ3JvdW5kOiBAaG92ZXItY29sb3I7XG4gIH1cbiAgJjphY3RpdmUge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIEBjb2xvcjtcbiAgICBjb2xvcjogQGNvbG9yO1xuICAgIGJhY2tncm91bmQ6IEBob3Zlci1hY3RpdmU7XG4gIH1cbn1cbi5hY3RpdmUge1xuICBjb2xvcjogI2ZmZmZmZjtcbiAgYmFja2dyb3VuZDogQGNvbG9yO1xufVxuLmZvcm0ge1xuICBwYWRkaW5nLWxlZnQ6IDUwcHg7XG4gIC5mb3JtSXRlbSB7XG4gICAgaGVpZ2h0OiAzNnB4O1xuICAgIGxpbmUtaGVpZ2h0OiAzNnB4O1xuICAgIG1hcmdpbi1ib3R0b206IDIwcHg7XG4gICAgaW5wdXQge1xuICAgICAgd2lkdGg6IDEyMHB4O1xuICAgICAgaGVpZ2h0OiAzMHB4O1xuICAgICAgb3V0bGluZTogbm9uZTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIEBjb2xvcjtcbiAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgIGZvbnQtd2VpZ2h0OiA5MDA7XG4gICAgICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gICAgICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xuICAgIH1cbiAgfVxufVxuLmZsb3cge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgLmxlZnQge1xuICAgIHdpZHRoOiAxMjBweDtcbiAgICBtYXJnaW4tcmlnaHQ6IDIwcHg7XG4gICAgcGFkZGluZy10b3A6IDEwcHg7XG4gICAgcGFkZGluZy1ib3R0b206IDEwcHg7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIC5pdGVtIHtcbiAgICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICBoZWlnaHQ6IDYwcHg7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCBAY29sb3I7XG4gICAgICBtYXJnaW4tYm90dG9tOiAyMHB4O1xuICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgbGluZS1oZWlnaHQ6IDYwcHg7XG4gICAgICBmb250LXdlaWdodDogOTAwO1xuICAgICAgZm9udC1zaXplOiAyMHB4O1xuICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgdXNlci1zZWxlY3Q6IG5vbmU7XG4gICAgfVxuICB9XG4gIC5yaWdodCB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcbiAgfVxufVxuXG4uZ3JhcGhjb250YWluZXIge1xuICB3aWR0aDogODAwcHg7XG4gIGhlaWdodDogNjAwcHg7XG4gIG1pbi13aWR0aDogMjAwcHg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbn1cbiIsIjpob3N0IHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHdpZHRoOiAxMDAlO1xufVxuOmhvc3QgPiBkaXYge1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xufVxuLnRvb2xCYXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiA2NHB4O1xuICBtYXJnaW4tYm90dG9tOiAzMHB4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cbi5idG4ge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHBhZGRpbmc6IDAgMjBweDtcbiAgaGVpZ2h0OiA0MHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCAjNzIwMmJiO1xuICBjb2xvcjogIzcyMDJiYjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBsaW5lLWhlaWdodDogNDBweDtcbiAgZm9udC1zaXplOiAxNnB4O1xuICBmb250LXdlaWdodDogNjAwO1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHVzZXItc2VsZWN0OiBub25lO1xuICBtYXJnaW4tcmlnaHQ6IDIwcHg7XG59XG4uYnRuOmhvdmVyIHtcbiAgYm9yZGVyOiAxcHggc29saWQgIzcyMDJiYjtcbiAgY29sb3I6ICNmZmZmZmY7XG4gIGJhY2tncm91bmQ6IHJnYmEoMTEzLCAyLCAxODcsIDAuNSk7XG59XG4uYnRuOmFjdGl2ZSB7XG4gIGJvcmRlcjogMXB4IHNvbGlkICM3MjAyYmI7XG4gIGNvbG9yOiAjNzIwMmJiO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDExMywgMiwgMTg3LCAwLjIpO1xufVxuLmFjdGl2ZSB7XG4gIGNvbG9yOiAjZmZmZmZmO1xuICBiYWNrZ3JvdW5kOiAjNzIwMmJiO1xufVxuLmZvcm0ge1xuICBwYWRkaW5nLWxlZnQ6IDUwcHg7XG59XG4uZm9ybSAuZm9ybUl0ZW0ge1xuICBoZWlnaHQ6IDM2cHg7XG4gIGxpbmUtaGVpZ2h0OiAzNnB4O1xuICBtYXJnaW4tYm90dG9tOiAyMHB4O1xufVxuLmZvcm0gLmZvcm1JdGVtIGlucHV0IHtcbiAgd2lkdGg6IDEyMHB4O1xuICBoZWlnaHQ6IDMwcHg7XG4gIG91dGxpbmU6IG5vbmU7XG4gIGJvcmRlcjogMXB4IHNvbGlkICM3MjAyYmI7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgZm9udC13ZWlnaHQ6IDkwMDtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xufVxuLmZsb3cge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cbi5mbG93IC5sZWZ0IHtcbiAgd2lkdGg6IDEyMHB4O1xuICBtYXJnaW4tcmlnaHQ6IDIwcHg7XG4gIHBhZGRpbmctdG9wOiAxMHB4O1xuICBwYWRkaW5nLWJvdHRvbTogMTBweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuLmZsb3cgLmxlZnQgLml0ZW0ge1xuICBkaXNwbGF5OiBibG9jaztcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogNjBweDtcbiAgYm9yZGVyOiAxcHggc29saWQgIzcyMDJiYjtcbiAgbWFyZ2luLWJvdHRvbTogMjBweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBsaW5lLWhlaWdodDogNjBweDtcbiAgZm9udC13ZWlnaHQ6IDkwMDtcbiAgZm9udC1zaXplOiAyMHB4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHVzZXItc2VsZWN0OiBub25lO1xufVxuLmZsb3cgLnJpZ2h0IHtcbiAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcbn1cbi5ncmFwaGNvbnRhaW5lciB7XG4gIHdpZHRoOiA4MDBweDtcbiAgaGVpZ2h0OiA2MDBweDtcbiAgbWluLXdpZHRoOiAyMDBweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xufVxuIl19 */");
+
+/***/ }),
+
+/***/ "./src/app/modules/example/canvas2-example/canvas2-example.component.ts":
+/*!******************************************************************************!*\
+  !*** ./src/app/modules/example/canvas2-example/canvas2-example.component.ts ***!
+  \******************************************************************************/
+/*! exports provided: Canvas2ExampleComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Canvas2ExampleComponent", function() { return Canvas2ExampleComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_lib3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/lib3 */ "./src/app/lib3/index.ts");
+
+
+
+let Canvas2ExampleComponent = class Canvas2ExampleComponent {
+    constructor() {
+        this.items = [
+        // {
+        //   shapeName: 'rect',
+        //   label: '矩形',
+        //   fillStyle: '#722ed1',
+        // },
+        // {
+        //   shapeName: 'circle',
+        //   label: '圆形',
+        //   fillStyle: '#4d9f0c',
+        // },
+        ];
+        this.size = {
+            width: 800,
+            height: 600,
+        };
+        this.throttleNumber = 1;
+        this.moreNumber = 1;
+        this.isHightRender = false;
+    }
+    ngOnInit() {
+        const size = this.size;
+        this.graph = new src_app_lib3__WEBPACK_IMPORTED_MODULE_2__["Graph"]({
+            container: this.graphContainer.nativeElement,
+            width: size.width,
+            height: size.height,
+        });
+        // this.graph.read({
+        //   nodes: [
+        //     this.getNodeOption(120, 40, 120, 120),
+        //     this.getNodeOption(160, 80, 120, 120),
+        //   ]
+        // });
+        // this.graph.read({
+        //   nodes: this.createMoreNode(10, 500, 500)
+        // }, true);
+        this.isHightRender = this.graph.highRender;
+    }
+    getNodeOption(x, y, width, height) {
+        return {
+            width: width || 120,
+            height: height || 40,
+            x: x || 30,
+            y: y || 60,
+            shapeName: 'base-node'
+        };
+    }
+    createMoreNode(count, x, y, r) {
+        const output = [];
+        for (let idx = 0; idx < count; idx++) {
+            const nodeConfig = {
+                width: r || 60,
+                height: r || 60,
+                x: Math.floor(Math.random() * x),
+                y: Math.floor(Math.random() * y),
+                shapeName: 'base-node'
+            };
+            output.push(nodeConfig);
+        }
+        return output;
+    }
+    throttleData() {
+        const size = this.size;
+        const number = isNaN(Number(this.throttleNumber)) ? 0 : Number(this.throttleNumber);
+        const nodes = this.createMoreNode(number, size.width - 100, size.height - 100);
+        this.graph.read({ nodes }, true);
+    }
+    moreData() {
+        const size = this.size;
+        const number = isNaN(Number(this.moreNumber)) ? 0 : Number(this.moreNumber);
+        const nodes = this.createMoreNode(number, size.width - 100, size.height - 100);
+        this.graph.read({ nodes });
+    }
+    onDragStart(event, item) {
+        // const baseConfig = this.createShape(item);
+        // this.canvas.addPreparNode(baseConfig);
+    }
+    setActive(active) {
+        this.isHightRender = active;
+        this.graph.startHighRender(active);
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('graphcontainer', { static: true })
+], Canvas2ExampleComponent.prototype, "graphContainer", void 0);
+Canvas2ExampleComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-canvas2-example',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./canvas2-example.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/modules/example/canvas2-example/canvas2-example.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./canvas2-example.component.less */ "./src/app/modules/example/canvas2-example/canvas2-example.component.less")).default]
+    })
+], Canvas2ExampleComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/modules/example/element-example/element-example.component.less":
+/*!********************************************************************************!*\
+  !*** ./src/app/modules/example/element-example/element-example.component.less ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (":host {\n  display: block;\n  width: 100%;\n}\n:host > div {\n  box-sizing: border-box;\n}\n.graphcontainer {\n  width: 800px;\n  height: 600px;\n  min-width: 200px;\n  position: relative;\n  background: #fff;\n  border: 1px solid #7202bb;\n  margin: 50px auto;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3FpbmdsaXUvcHJvamVjdC9zZWxmL2NvZGUvY2FudmFzLWVuZ2luZS1kZW1vL3NyYy9hcHAvbW9kdWxlcy9leGFtcGxlL2VsZW1lbnQtZXhhbXBsZS9lbGVtZW50LWV4YW1wbGUuY29tcG9uZW50Lmxlc3MiLCJzcmMvYXBwL21vZHVsZXMvZXhhbXBsZS9lbGVtZW50LWV4YW1wbGUvZWxlbWVudC1leGFtcGxlLmNvbXBvbmVudC5sZXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUlBO0VBQ0UsY0FBQTtFQUNBLFdBQUE7QUNIRjtBREtFO0VBQ0Usc0JBQUE7QUNISjtBRE9BO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSx5QkFBQTtFQUNBLGlCQUFBO0FDTEYiLCJmaWxlIjoic3JjL2FwcC9tb2R1bGVzL2V4YW1wbGUvZWxlbWVudC1leGFtcGxlL2VsZW1lbnQtZXhhbXBsZS5jb21wb25lbnQubGVzcyIsInNvdXJjZXNDb250ZW50IjpbIkBjb2xvcjogIzcyMDJiYjtcbkBob3Zlci1jb2xvcjogcmdiYSgxMTMsIDIsIDE4NywgMC41KTtcbkBob3Zlci1hY3RpdmU6IHJnYmEoMTEzLCAyLCAxODcsIDAuMik7XG5cbjpob3N0IHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHdpZHRoOiAxMDAlO1xuXG4gICYgPiBkaXYge1xuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIH1cbn1cblxuLmdyYXBoY29udGFpbmVyIHtcbiAgd2lkdGg6IDgwMHB4O1xuICBoZWlnaHQ6IDYwMHB4O1xuICBtaW4td2lkdGg6IDIwMHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGJhY2tncm91bmQ6ICNmZmY7XG4gIGJvcmRlcjogMXB4IHNvbGlkIEBjb2xvcjtcbiAgbWFyZ2luOiA1MHB4IGF1dG87XG59XG4iLCI6aG9zdCB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICB3aWR0aDogMTAwJTtcbn1cbjpob3N0ID4gZGl2IHtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cbi5ncmFwaGNvbnRhaW5lciB7XG4gIHdpZHRoOiA4MDBweDtcbiAgaGVpZ2h0OiA2MDBweDtcbiAgbWluLXdpZHRoOiAyMDBweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xuICBib3JkZXI6IDFweCBzb2xpZCAjNzIwMmJiO1xuICBtYXJnaW46IDUwcHggYXV0bztcbn1cbiJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/modules/example/element-example/element-example.component.ts":
+/*!******************************************************************************!*\
+  !*** ./src/app/modules/example/element-example/element-example.component.ts ***!
+  \******************************************************************************/
+/*! exports provided: ElementExampleComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ElementExampleComponent", function() { return ElementExampleComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_lib2_graph__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/lib2/graph */ "./src/app/lib2/graph/index.ts");
+
+
+
+let ElementExampleComponent = class ElementExampleComponent {
+    constructor() {
+        this.size = {
+            width: 800,
+            height: 600,
+        };
+    }
+    ngOnInit() {
+        this.renderElement();
+    }
+    renderElement() {
+        const size = this.size;
+        this.graph = new src_app_lib2_graph__WEBPACK_IMPORTED_MODULE_2__["Graph"]({
+            container: this.graphContainer.nativeElement,
+            width: size.width,
+            height: size.height,
+        });
+        this.renderGraph();
+        console.log(this.graph);
+    }
+    renderGraph() {
+        this.graph.render();
+        this.graph.addItem({ x: 100, y: 300, width: 300, height: 200 });
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('graphcontainer', { static: true })
+], ElementExampleComponent.prototype, "graphContainer", void 0);
+ElementExampleComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-element-example',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./element-example.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/modules/example/element-example/element-example.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./element-example.component.less */ "./src/app/modules/example/element-example/element-example.component.less")).default]
+    })
+], ElementExampleComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/modules/example/example-routing.module.ts":
 /*!***********************************************************!*\
   !*** ./src/app/modules/example/example-routing.module.ts ***!
@@ -27917,6 +31042,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _canvas_example_canvas_example_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./canvas-example/canvas-example.component */ "./src/app/modules/example/canvas-example/canvas-example.component.ts");
+/* harmony import */ var _web_gl_web_gl_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./web-gl/web-gl.component */ "./src/app/modules/example/web-gl/web-gl.component.ts");
+/* harmony import */ var _element_example_element_example_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./element-example/element-example.component */ "./src/app/modules/example/element-example/element-example.component.ts");
+/* harmony import */ var _canvas2_example_canvas2_example_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./canvas2-example/canvas2-example.component */ "./src/app/modules/example/canvas2-example/canvas2-example.component.ts");
+
+
+
 
 
 
@@ -27931,16 +31062,31 @@ const routes = [
                 data: { title: 'Canvas引擎Demo' },
             },
             {
-                path: '',
-                redirectTo: '/example/canvas',
-                pathMatch: 'full',
+                path: 'canvas2',
+                component: _canvas2_example_canvas2_example_component__WEBPACK_IMPORTED_MODULE_6__["Canvas2ExampleComponent"],
                 data: { title: 'Canvas引擎Demo' },
+            },
+            {
+                path: 'webgl',
+                component: _web_gl_web_gl_component__WEBPACK_IMPORTED_MODULE_4__["WebGlComponent"],
+                data: { title: 'web-gl' },
+            },
+            {
+                path: 'element',
+                component: _element_example_element_example_component__WEBPACK_IMPORTED_MODULE_5__["ElementExampleComponent"],
+                data: { title: 'element' },
+            },
+            {
+                path: '',
+                redirectTo: '/example/canvas2',
+                pathMatch: 'full',
+                data: { title: 'Element' },
             },
         ],
     },
     {
         path: '',
-        redirectTo: '/example/canvas',
+        redirectTo: '/example/canvas2',
         pathMatch: 'full',
         data: { title: 'Canvas引擎Demo' },
     },
@@ -27974,6 +31120,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _canvas_example_canvas_example_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./canvas-example/canvas-example.component */ "./src/app/modules/example/canvas-example/canvas-example.component.ts");
 /* harmony import */ var _example_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./example-routing.module */ "./src/app/modules/example/example-routing.module.ts");
+/* harmony import */ var _web_gl_web_gl_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./web-gl/web-gl.component */ "./src/app/modules/example/web-gl/web-gl.component.ts");
+/* harmony import */ var _element_example_element_example_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./element-example/element-example.component */ "./src/app/modules/example/element-example/element-example.component.ts");
+/* harmony import */ var _canvas2_example_canvas2_example_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./canvas2-example/canvas2-example.component */ "./src/app/modules/example/canvas2-example/canvas2-example.component.ts");
+
+
+
 
 
 
@@ -27986,6 +31138,9 @@ ExampleModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         declarations: [
             _canvas_example_canvas_example_component__WEBPACK_IMPORTED_MODULE_4__["CanvasExampleComponent"],
+            _web_gl_web_gl_component__WEBPACK_IMPORTED_MODULE_6__["WebGlComponent"],
+            _element_example_element_example_component__WEBPACK_IMPORTED_MODULE_7__["ElementExampleComponent"],
+            _canvas2_example_canvas2_example_component__WEBPACK_IMPORTED_MODULE_8__["Canvas2ExampleComponent"],
         ],
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
@@ -27994,6 +31149,67 @@ ExampleModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         ]
     })
 ], ExampleModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/modules/example/web-gl/web-gl.component.less":
+/*!**************************************************************!*\
+  !*** ./src/app/modules/example/web-gl/web-gl.component.less ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsZXMvZXhhbXBsZS93ZWItZ2wvd2ViLWdsLmNvbXBvbmVudC5sZXNzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/modules/example/web-gl/web-gl.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/modules/example/web-gl/web-gl.component.ts ***!
+  \************************************************************/
+/*! exports provided: WebGlComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WebGlComponent", function() { return WebGlComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let WebGlComponent = class WebGlComponent {
+    constructor() { }
+    ngOnInit() {
+        this.render();
+    }
+    /**
+     * 创建元素
+     * @param tagName 元素标签
+     */
+    createElement(tagName) {
+        return document.createElement(tagName);
+    }
+    render() {
+        const canvas = this.createElement('canvas');
+        const gl = canvas.getContext('experimental-webgl');
+        const program = gl.createProgram();
+        gl.useProgram(program);
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('graphcontainer', { static: true })
+], WebGlComponent.prototype, "container", void 0);
+WebGlComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-web-gl',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./web-gl.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/modules/example/web-gl/web-gl.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./web-gl.component.less */ "./src/app/modules/example/web-gl/web-gl.component.less")).default]
+    })
+], WebGlComponent);
 
 
 
